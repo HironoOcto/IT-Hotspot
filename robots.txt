@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://hotspot.octohirono.dev/sitemap.xml

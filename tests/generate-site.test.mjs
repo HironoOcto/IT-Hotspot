@@ -38,19 +38,25 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
     const result = runGenerator(workspace);
     assert.equal(result.status, 0, result.stderr || result.stdout);
 
-    const archiveIndex = path.join(workspace, "archive", "index.html");
-    const rootIndex = path.join(workspace, "index.html");
+    const publicDir = path.join(workspace, "public");
+    const archiveIndex = path.join(publicDir, "archive", "index.html");
+    const rootIndex = path.join(publicDir, "index.html");
     const vercelConfig = path.join(workspace, "vercel.json");
-    const sitemap = path.join(workspace, "sitemap.xml");
-    const robots = path.join(workspace, "robots.txt");
+    const sitemap = path.join(publicDir, "sitemap.xml");
+    const robots = path.join(publicDir, "robots.txt");
     const issueFiles = listIssueFiles(path.join(workspace, "archive"));
     const latestIssueFile = issueFiles[0];
 
+    assert.equal(existsSync(publicDir), true);
     assert.equal(existsSync(archiveIndex), true);
     assert.equal(existsSync(rootIndex), true);
     assert.equal(existsSync(vercelConfig), true);
     assert.equal(existsSync(sitemap), true);
     assert.equal(existsSync(robots), true);
+    assert.equal(existsSync(path.join(workspace, "archive", "index.html")), false);
+    assert.equal(existsSync(path.join(workspace, "index.html")), false);
+    assert.equal(existsSync(path.join(workspace, "sitemap.xml")), false);
+    assert.equal(existsSync(path.join(workspace, "robots.txt")), false);
 
     const archiveHtml = readFileSync(archiveIndex, "utf8");
     assert.match(archiveHtml, /Archive Index \/ 2026/);
@@ -65,6 +71,7 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
 
     const generatedVercelConfig = JSON.parse(readFileSync(vercelConfig, "utf8"));
     assert.deepEqual(generatedVercelConfig, {
+      outputDirectory: "public",
       redirects: [
         {
           source: "/",
@@ -89,11 +96,20 @@ test("build enhances issue pages with archive link and SEO metadata", async () =
   const workspace = makeWorkspace();
 
   try {
+    const issueFiles = listIssueFiles(path.join(workspace, "archive"));
+    const latestIssueFile = issueFiles[0];
+    const originalLatestIssue = readFileSync(
+      path.join(workspace, "archive", latestIssueFile),
+      "utf8"
+    );
     const result = runGenerator(workspace);
     assert.equal(result.status, 0, result.stderr || result.stdout);
-    const latestIssueFile = listIssueFiles(path.join(workspace, "archive"))[0];
 
     const latestIssue = readFileSync(
+      path.join(workspace, "public", "archive", latestIssueFile),
+      "utf8"
+    );
+    const sourceIssue = readFileSync(
       path.join(workspace, "archive", latestIssueFile),
       "utf8"
     );
@@ -106,6 +122,7 @@ test("build enhances issue pages with archive link and SEO metadata", async () =
     );
     assert.match(latestIssue, /<meta name="description" content="[^"]+"/);
     assert.match(latestIssue, /href="index\.html"[^>]*>往期热点<\/a>/);
+    assert.equal(sourceIssue, originalLatestIssue);
   } finally {
     await rm(workspace, { recursive: true, force: true });
   }

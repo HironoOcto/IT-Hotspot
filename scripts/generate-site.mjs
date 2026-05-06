@@ -1,10 +1,17 @@
 #!/usr/bin/env node
 
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import {
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
 
 const SITE_URL = "https://hotspot.octohirono.dev";
 const ISSUE_FILE_RE = /^(\d{4})-(\d{2})-(\d{2})-hotspot\.html$/;
+const OUTPUT_DIR = "public";
 
 function parseArgs(argv) {
   const args = { root: process.cwd() };
@@ -773,6 +780,7 @@ function renderRootIndexHtml(latestIssue) {
 function renderVercelConfig(latestIssue) {
   return JSON.stringify(
     {
+      outputDirectory: OUTPUT_DIR,
       redirects: [
         {
           source: "/",
@@ -816,16 +824,23 @@ function writeFile(filePath, contents) {
 function buildSite(rootDir) {
   const issues = collectIssues(rootDir);
   const latestIssue = issues[0];
+  const publicDir = path.join(rootDir, OUTPUT_DIR);
+  const publicArchiveDir = path.join(publicDir, "archive");
+
+  rmSync(publicDir, { recursive: true, force: true });
 
   for (const issue of issues) {
-    writeFile(issue.filePath, enhanceIssueHtml(issue));
+    writeFile(
+      path.join(publicArchiveDir, issue.fileName),
+      enhanceIssueHtml(issue)
+    );
   }
 
-  writeFile(path.join(rootDir, "archive", "index.html"), renderArchiveHtml(issues));
-  writeFile(path.join(rootDir, "index.html"), renderRootIndexHtml(latestIssue));
+  writeFile(path.join(publicArchiveDir, "index.html"), renderArchiveHtml(issues));
+  writeFile(path.join(publicDir, "index.html"), renderRootIndexHtml(latestIssue));
   writeFile(path.join(rootDir, "vercel.json"), renderVercelConfig(latestIssue));
-  writeFile(path.join(rootDir, "sitemap.xml"), renderSitemapXml(issues));
-  writeFile(path.join(rootDir, "robots.txt"), renderRobotsTxt());
+  writeFile(path.join(publicDir, "sitemap.xml"), renderSitemapXml(issues));
+  writeFile(path.join(publicDir, "robots.txt"), renderRobotsTxt());
 }
 
 const { root } = parseArgs(process.argv.slice(2));

@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+public/
 
 # Package manager caches / logs
 .pnpm-store/
@@ -16,6 +17,7 @@ pnpm-debug.log*
 
 # Vercel local project settings
 .vercel/
+.vercel
 
 # Test / coverage artifacts
 coverage/
@@ -31,4 +33,3 @@ coverage/
 # OS files
 .DS_Store
 Thumbs.db
-.vercel
