@@ -699,12 +699,11 @@ function renderArchiveHtml(issues) {
 
     <footer class="footer">
       <div>
-        <h5>方法论</h5>
-        <p>归档索引按年份与月份编排，每个条目对应一期完整 hotspot。所有期刊条目都直接写入 HTML，便于搜索引擎抓取和长期沉淀。</p>
-      </div>
-      <div>
         <h5>关于项目</h5>
         <p>Hotspot 是一个专注独立开发者、出海与 AI 创业的情报站点。我们把每日热点整理成完整期刊，并以报纸式结构留存归档。</p>
+      </div>
+      <div>
+        
       </div>
       <div>
         <h5>订阅与归档</h5>
