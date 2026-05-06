@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Package manager caches / logs
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Vercel local project settings
+.vercel/
+
+# Test / coverage artifacts
+coverage/
+*.lcov
+
+# Editor / IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.orig
+
+# OS files
+.DS_Store
+Thumbs.db

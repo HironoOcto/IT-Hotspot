@@ -1,0 +1,12 @@
+{
+  "name": "it-hotspot",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/generate-site.mjs",
+    "test": "node --test"
+  }
+}

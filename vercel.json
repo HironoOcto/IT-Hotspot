@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/archive/2026-05-06-hotspot.html",
+      "statusCode": 307
+    }
+  ]
+}
