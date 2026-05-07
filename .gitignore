@@ -33,3 +33,7 @@ coverage/
 # OS files
 .DS_Store
 Thumbs.db
+
+SEO_AUDIT.md
+SEO_PLAN.md
+.claude/

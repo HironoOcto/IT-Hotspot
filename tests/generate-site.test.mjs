@@ -10,11 +10,15 @@ import { spawnSync } from "node:child_process";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const generatorScript = path.join(repoRoot, "scripts", "generate-site.mjs");
 const archiveSource = path.join(repoRoot, "archive");
+const assetSource = path.join(repoRoot, "assets");
+const faviconSource = path.join(repoRoot, "favicon.ico");
 const issueFilePattern = /^\d{4}-\d{2}-\d{2}-hotspot\.html$/;
 
 function makeWorkspace() {
   const workspace = mkdtempSync(path.join(tmpdir(), "it-hotspot-"));
   cpSync(archiveSource, path.join(workspace, "archive"), { recursive: true });
+  cpSync(assetSource, path.join(workspace, "assets"), { recursive: true });
+  cpSync(faviconSource, path.join(workspace, "favicon.ico"));
   return workspace;
 }
 
@@ -44,6 +48,8 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
     const vercelConfig = path.join(workspace, "vercel.json");
     const sitemap = path.join(publicDir, "sitemap.xml");
     const robots = path.join(publicDir, "robots.txt");
+    const favicon = path.join(publicDir, "favicon.ico");
+    const appleTouchIcon = path.join(publicDir, "apple-touch-icon.png");
     const issueFiles = listIssueFiles(path.join(workspace, "archive"));
     const latestIssueFile = issueFiles[0];
 
@@ -53,6 +59,8 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
     assert.equal(existsSync(vercelConfig), true);
     assert.equal(existsSync(sitemap), true);
     assert.equal(existsSync(robots), true);
+    assert.equal(existsSync(favicon), true);
+    assert.equal(existsSync(appleTouchIcon), true);
     assert.equal(existsSync(path.join(workspace, "archive", "index.html")), false);
     assert.equal(existsSync(path.join(workspace, "index.html")), false);
     assert.equal(existsSync(path.join(workspace, "sitemap.xml")), false);
@@ -68,6 +76,11 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
 
     const generatedIndex = readFileSync(rootIndex, "utf8");
     assert.match(generatedIndex, new RegExp(latestIssueFile.replaceAll(".", "\\.")));
+    assert.match(generatedIndex, /<link rel="icon" href="favicon\.ico" sizes="any" \/>/);
+    assert.match(
+      generatedIndex,
+      /<link rel="apple-touch-icon" href="apple-touch-icon\.png" \/>/
+    );
 
     const generatedVercelConfig = JSON.parse(readFileSync(vercelConfig, "utf8"));
     assert.deepEqual(generatedVercelConfig, {
@@ -122,6 +135,11 @@ test("build enhances issue pages with archive link and SEO metadata", async () =
     );
     assert.match(latestIssue, /<meta name="description" content="[^"]+"/);
     assert.match(latestIssue, /href="index\.html"[^>]*>往期热点<\/a>/);
+    assert.match(latestIssue, /<link rel="icon" href="\.\.\/favicon\.ico" sizes="any" \/>/);
+    assert.match(
+      latestIssue,
+      /<link rel="apple-touch-icon" href="\.\.\/apple-touch-icon\.png" \/>/
+    );
     assert.equal(sourceIssue, originalLatestIssue);
   } finally {
     await rm(workspace, { recursive: true, force: true });

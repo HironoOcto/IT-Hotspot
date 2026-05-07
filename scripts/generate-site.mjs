@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import {
+  copyFileSync,
   mkdirSync,
   readFileSync,
   readdirSync,
@@ -10,8 +11,11 @@ import {
 import path from "node:path";
 
 const SITE_URL = "https://hotspot.octohirono.dev";
+const SITE_NAME = "Hotspot 每日热榜";
 const ISSUE_FILE_RE = /^(\d{4})-(\d{2})-(\d{2})-hotspot\.html$/;
 const OUTPUT_DIR = "public";
+const FAVICON_FILE = "favicon.ico";
+const APPLE_TOUCH_ICON_FILE = "apple-touch-icon.png";
 
 function parseArgs(argv) {
   const args = { root: process.cwd() };
@@ -177,6 +181,19 @@ function upsertTag(html, tagRegex, tagMarkup) {
   return html.replace("</head>", `  ${tagMarkup}\n</head>`);
 }
 
+function withFaviconLinks(html, prefix = "") {
+  const assetPrefix = prefix ? `${prefix}/` : "";
+  const faviconTags = `  <link rel="icon" href="${assetPrefix}${FAVICON_FILE}" sizes="any" />\n  <link rel="apple-touch-icon" href="${assetPrefix}${APPLE_TOUCH_ICON_FILE}" />`;
+
+  html = html.replace(/\s*<link rel="icon" href="[^"]+"[^>]*\/?>\n?/g, "");
+  html = html.replace(
+    /\s*<link rel="apple-touch-icon" href="[^"]+"[^>]*\/?>\n?/g,
+    ""
+  );
+
+  return html.replace("</head>", `${faviconTags}\n</head>`);
+}
+
 function enhanceIssueHtml(issue) {
   let html = issue.html;
   const canonicalTag = `<link rel="canonical" href="${issue.canonicalUrl}" />`;
@@ -197,6 +214,35 @@ function enhanceIssueHtml(issue) {
   html = html.replace(
     /<a(?:\s+href="[^"]*")?>往期热点<\/a>/g,
     '<a href="index.html">往期热点</a>'
+  );
+  html = withFaviconLinks(html, "..");
+
+  const ogBlock = `  <meta property="og:type" content="article" />
+  <meta property="og:title" content="${escapeAttribute(issue.headline)}" />
+  <meta property="og:description" content="${escapeAttribute(issue.description)}" />
+  <meta property="og:url" content="${issue.canonicalUrl}" />
+  <meta property="og:site_name" content="${SITE_NAME}" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="${escapeAttribute(issue.headline)}" />
+  <meta name="twitter:description" content="${escapeAttribute(issue.description)}" />`;
+  html = html.replace("</head>", `${ogBlock}\n</head>`);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: issue.headline,
+    description: issue.description,
+    url: issue.canonicalUrl,
+    datePublished: issue.dateString,
+    dateModified: issue.dateString,
+    inLanguage: "zh-CN",
+    publisher: { "@type": "Organization", name: "Hotspot", url: SITE_URL },
+    isPartOf: { "@type": "CollectionPage", url: `${SITE_URL}/archive/` },
+  };
+  html = html.replace(
+    "</head>",
+    `  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>\n</head>`
   );
 
   return html;
@@ -315,18 +361,47 @@ function renderArchiveHtml(issues) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotspot Archive Index</title>
+  <title>Hotspot 往期归档 · 独立开发 AI 创业每日情报</title>
   <meta
     name="description"
-    content="IT Hotspot 往期归档。按年份和月份浏览历期 hotspot，每期包含标题、摘要与扫描统计。"
+    content="IT Hotspot 往期归档。按年份和月份浏览历期独立开发、出海与 AI 创业每日热榜，每期包含头条事件、跨平台热点与扫描统计。"
   />
   <link rel="canonical" href="${SITE_URL}/archive/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hotspot 往期归档 · 独立开发 AI 创业每日情报" />
+  <meta property="og:description" content="IT Hotspot 往期归档。按年份和月份浏览历期独立开发、出海与 AI 创业每日热榜。" />
+  <meta property="og:url" content="${SITE_URL}/archive/" />
+  <meta property="og:site_name" content="${SITE_NAME}" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hotspot 往期归档 · 独立开发 AI 创业每日情报" />
+  <meta name="twitter:description" content="IT Hotspot 往期归档。按年份和月份浏览历期独立开发、出海与 AI 创业每日热榜。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:wght@700;900&display=swap"
   />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Hotspot 往期归档",
+    description: "IT Hotspot 往期归档。按年份和月份浏览历期独立开发、出海与 AI 创业每日热榜。",
+    url: `${SITE_URL}/archive/`,
+    inLanguage: "zh-CN",
+    publisher: { "@type": "Organization", name: "Hotspot", url: SITE_URL },
+    numberOfItems: issues.length,
+  })}</script>
+  <script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Hotspot", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "往期归档", item: `${SITE_URL}/archive/` },
+    ],
+  })}</script>
   <style>
     :root {
       --paper: #f6f1e7;
@@ -664,7 +739,7 @@ function renderArchiveHtml(issues) {
     <header class="masthead">
       <div class="masthead-row">
         <div class="masthead-copy">独立开发 · 出海 · AI 创业<br />内容归档 · 报纸版</div>
-        <h1 class="brand">HOTSPORT</h1>
+        <p class="brand">HOTSPOT</p>
         <div class="masthead-meta">ARCHIVE INDEX<br />SINCE ${archiveData.at(-1).year}</div>
       </div>
       <nav class="top-nav" aria-label="Primary">
@@ -708,7 +783,7 @@ function renderArchiveHtml(issues) {
       <div>
         <h5>订阅与归档</h5>
         <p>域名 ${SITE_URL.replace("https://", "")} · 总归档 ${issues.length} 期 · 最新一期 ${issues[0].dateString}</p>
-        <div class="footer-note">© ${new Date().getUTCFullYear()} HOTSPORT EDITORIAL — INDIE INTEL REGISTRY</div>
+        <div class="footer-note">© ${new Date().getUTCFullYear()} HOTSPOT EDITORIAL — INDIE INTEL REGISTRY</div>
       </div>
     </footer>
   </main>
@@ -765,6 +840,8 @@ function renderRootIndexHtml(latestIssue) {
   <title>Hotspot · 最新一期</title>
   <meta name="robots" content="noindex,follow" />
   <link rel="canonical" href="${latestIssue.canonicalUrl}" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta http-equiv="refresh" content="0; url=${destination}" />
 </head>
 <body>
@@ -794,17 +871,23 @@ function renderVercelConfig(latestIssue) {
 }
 
 function renderSitemapXml(issues) {
-  const urls = [
-    `${SITE_URL}/archive/`,
-    ...issues.map((issue) => `${SITE_URL}/archive/${issue.fileName}`),
+  const latestDate = issues[0].dateString;
+  const entries = [
+    { loc: `${SITE_URL}/`, lastmod: latestDate },
+    { loc: `${SITE_URL}/archive/`, lastmod: latestDate },
+    ...issues.map((issue) => ({
+      loc: `${SITE_URL}/archive/${issue.fileName}`,
+      lastmod: issue.dateString,
+    })),
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
+${entries
   .map(
-    (url) => `  <url>
-    <loc>${escapeHtml(url)}</loc>
+    ({ loc, lastmod }) => `  <url>
+    <loc>${escapeHtml(loc)}</loc>
+    <lastmod>${lastmod}</lastmod>
   </url>`
   )
   .join("\n")}
@@ -813,6 +896,34 @@ ${urls
 
 function renderRobotsTxt() {
   return `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`;
+}
+
+function renderLlmsTxt() {
+  return `# Hotspot 每日热榜
+
+> 专注独立开发者、出海与 AI 创业的每日情报站点
+
+## 关于
+
+Hotspot 每日扫描 Twitter/X、Hacker News、Reddit、Product Hunt 等平台，提取独立开发、出海创业、AI 产品领域的热点事件，以报纸版格式整理归档。每期均标注来源链接与传播数据。
+
+## 内容结构
+
+每期页面（/archive/YYYY-MM-DD-hotspot.html）包含：
+- 头条事件（hero headline + deck）
+- 跨平台热点（多平台同时出现的事件）
+- 行业热点（按平台分类的原始热点）
+- 实战打法（方法论与教程类内容）
+- 话题追踪（持续关注的议题）
+- 社区热议（评论区精选）
+- 新品产品 Top（Product Hunt 精选）
+
+## 发布
+
+- 发布频率：每日更新
+- 归档页：${SITE_URL}/archive/
+- Sitemap：${SITE_URL}/sitemap.xml
+`;
 }
 
 function writeFile(filePath, contents) {
@@ -840,6 +951,12 @@ function buildSite(rootDir) {
   writeFile(path.join(rootDir, "vercel.json"), renderVercelConfig(latestIssue));
   writeFile(path.join(publicDir, "sitemap.xml"), renderSitemapXml(issues));
   writeFile(path.join(publicDir, "robots.txt"), renderRobotsTxt());
+  writeFile(path.join(publicDir, "llms.txt"), renderLlmsTxt());
+  copyFileSync(path.join(rootDir, FAVICON_FILE), path.join(publicDir, FAVICON_FILE));
+  copyFileSync(
+    path.join(rootDir, "assets", APPLE_TOUCH_ICON_FILE),
+    path.join(publicDir, APPLE_TOUCH_ICON_FILE)
+  );
 }
 
 const { root } = parseArgs(process.argv.slice(2));
