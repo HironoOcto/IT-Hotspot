@@ -83,16 +83,7 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
     );
 
     const generatedVercelConfig = JSON.parse(readFileSync(vercelConfig, "utf8"));
-    assert.deepEqual(generatedVercelConfig, {
-      outputDirectory: "public",
-      redirects: [
-        {
-          source: "/",
-          destination: `/archive/${latestIssueFile}`,
-          statusCode: 307,
-        },
-      ],
-    });
+    assert.deepEqual(generatedVercelConfig, { outputDirectory: "public" });
 
     const generatedSitemap = readFileSync(sitemap, "utf8");
     assert.match(generatedSitemap, /https:\/\/hotspot\.octohirono\.dev\/archive\//);
@@ -134,7 +125,7 @@ test("build enhances issue pages with archive link and SEO metadata", async () =
       )
     );
     assert.match(latestIssue, /<meta name="description" content="[^"]+"/);
-    assert.match(latestIssue, /href="index\.html"[^>]*>往期热点<\/a>/);
+    assert.match(latestIssue, /href="\.\/"[^>]*>往期热点<\/a>/);
     assert.match(latestIssue, /<link rel="icon" href="\.\.\/favicon\.ico" sizes="any" \/>/);
     assert.match(
       latestIssue,

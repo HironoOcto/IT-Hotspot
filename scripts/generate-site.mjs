@@ -194,7 +194,7 @@ function withFaviconLinks(html, prefix = "") {
   return html.replace("</head>", `${faviconTags}\n</head>`);
 }
 
-function enhanceIssueHtml(issue) {
+function enhanceIssueHtml(issue, { faviconPrefix = "..", archiveLinkHref = "./" } = {}) {
   let html = issue.html;
   const canonicalTag = `<link rel="canonical" href="${issue.canonicalUrl}" />`;
   const descriptionTag = `<meta name="description" content="${escapeAttribute(
@@ -213,9 +213,9 @@ function enhanceIssueHtml(issue) {
   );
   html = html.replace(
     /<a(?:\s+href="[^"]*")?>往期热点<\/a>/g,
-    '<a href="index.html">往期热点</a>'
+    `<a href="${archiveLinkHref}">往期热点</a>`
   );
-  html = withFaviconLinks(html, "..");
+  html = withFaviconLinks(html, faviconPrefix);
 
   const ogBlock = `  <meta property="og:type" content="article" />
   <meta property="og:title" content="${escapeAttribute(issue.headline)}" />
@@ -830,40 +830,10 @@ function renderArchiveHtml(issues) {
 </html>`;
 }
 
-function renderRootIndexHtml(latestIssue) {
-  const destination = `archive/${latestIssue.fileName}`;
-  return `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotspot · 最新一期</title>
-  <meta name="robots" content="noindex,follow" />
-  <link rel="canonical" href="${latestIssue.canonicalUrl}" />
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <meta http-equiv="refresh" content="0; url=${destination}" />
-</head>
-<body>
-  <p>正在前往最新一期 Hotspot：<a href="${destination}">${escapeHtml(
-    latestIssue.dateString
-  )}</a></p>
-  <script>location.replace(${JSON.stringify(destination)});</script>
-</body>
-</html>`;
-}
-
-function renderVercelConfig(latestIssue) {
+function renderVercelConfig() {
   return JSON.stringify(
     {
       outputDirectory: OUTPUT_DIR,
-      redirects: [
-        {
-          source: "/",
-          destination: `/archive/${latestIssue.fileName}`,
-          statusCode: 307,
-        },
-      ],
     },
     null,
     2
@@ -947,8 +917,11 @@ function buildSite(rootDir) {
   }
 
   writeFile(path.join(publicArchiveDir, "index.html"), renderArchiveHtml(issues));
-  writeFile(path.join(publicDir, "index.html"), renderRootIndexHtml(latestIssue));
-  writeFile(path.join(rootDir, "vercel.json"), renderVercelConfig(latestIssue));
+  writeFile(
+    path.join(publicDir, "index.html"),
+    enhanceIssueHtml(latestIssue, { faviconPrefix: "", archiveLinkHref: "archive/" })
+  );
+  writeFile(path.join(rootDir, "vercel.json"), renderVercelConfig());
   writeFile(path.join(publicDir, "sitemap.xml"), renderSitemapXml(issues));
   writeFile(path.join(publicDir, "robots.txt"), renderRobotsTxt());
   writeFile(path.join(publicDir, "llms.txt"), renderLlmsTxt());
