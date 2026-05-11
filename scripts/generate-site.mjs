@@ -194,9 +194,18 @@ function withFaviconLinks(html, prefix = "") {
   return html.replace("</head>", `${faviconTags}\n</head>`);
 }
 
-function enhanceIssueHtml(issue, { faviconPrefix = "..", archiveLinkHref = "./" } = {}) {
+function enhanceIssueHtml(
+  issue,
+  {
+    faviconPrefix = "..",
+    archiveLinkHref = "./",
+    canonicalUrl = issue.canonicalUrl,
+    ogType = "article",
+    structuredDataType = "Article",
+  } = {}
+) {
   let html = issue.html;
-  const canonicalTag = `<link rel="canonical" href="${issue.canonicalUrl}" />`;
+  const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
   const descriptionTag = `<meta name="description" content="${escapeAttribute(
     issue.description
   )}" />`;
@@ -217,10 +226,10 @@ function enhanceIssueHtml(issue, { faviconPrefix = "..", archiveLinkHref = "./" 
   );
   html = withFaviconLinks(html, faviconPrefix);
 
-  const ogBlock = `  <meta property="og:type" content="article" />
+  const ogBlock = `  <meta property="og:type" content="${ogType}" />
   <meta property="og:title" content="${escapeAttribute(issue.headline)}" />
   <meta property="og:description" content="${escapeAttribute(issue.description)}" />
-  <meta property="og:url" content="${issue.canonicalUrl}" />
+  <meta property="og:url" content="${canonicalUrl}" />
   <meta property="og:site_name" content="${SITE_NAME}" />
   <meta property="og:locale" content="zh_CN" />
   <meta name="twitter:card" content="summary" />
@@ -230,16 +239,27 @@ function enhanceIssueHtml(issue, { faviconPrefix = "..", archiveLinkHref = "./" 
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": structuredDataType,
+    name: "Hotspot · 每日热榜",
     headline: issue.headline,
     description: issue.description,
-    url: issue.canonicalUrl,
+    url: canonicalUrl,
     datePublished: issue.dateString,
     dateModified: issue.dateString,
     inLanguage: "zh-CN",
     publisher: { "@type": "Organization", name: "Hotspot", url: SITE_URL },
     isPartOf: { "@type": "CollectionPage", url: `${SITE_URL}/archive/` },
   };
+  if (structuredDataType === "WebPage") {
+    jsonLd.mainEntity = {
+      "@type": "Article",
+      headline: issue.headline,
+      url: issue.canonicalUrl,
+      datePublished: issue.dateString,
+      dateModified: issue.dateString,
+      inLanguage: "zh-CN",
+    };
+  }
   html = html.replace(
     "</head>",
     `  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>\n</head>`
@@ -919,7 +939,13 @@ function buildSite(rootDir) {
   writeFile(path.join(publicArchiveDir, "index.html"), renderArchiveHtml(issues));
   writeFile(
     path.join(publicDir, "index.html"),
-    enhanceIssueHtml(latestIssue, { faviconPrefix: "", archiveLinkHref: "archive/" })
+    enhanceIssueHtml(latestIssue, {
+      faviconPrefix: "",
+      archiveLinkHref: "archive/",
+      canonicalUrl: `${SITE_URL}/`,
+      ogType: "website",
+      structuredDataType: "WebPage",
+    })
   );
   writeFile(path.join(rootDir, "vercel.json"), renderVercelConfig());
   writeFile(path.join(publicDir, "sitemap.xml"), renderSitemapXml(issues));

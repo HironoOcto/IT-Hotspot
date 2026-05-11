@@ -76,6 +76,24 @@ test("build generates archive, redirect, sitemap, and robots artifacts", async (
 
     const generatedIndex = readFileSync(rootIndex, "utf8");
     assert.match(generatedIndex, new RegExp(latestIssueFile.replaceAll(".", "\\.")));
+    assert.match(
+      generatedIndex,
+      /<link rel="canonical" href="https:\/\/hotspot\.octohirono\.dev\/" \/>/
+    );
+    assert.doesNotMatch(
+      generatedIndex,
+      new RegExp(
+        `<link rel="canonical" href="https://hotspot\\.octohirono\\.dev/archive/${latestIssueFile.replaceAll(".", "\\.")}"\\s*/?>`
+      )
+    );
+    assert.match(
+      generatedIndex,
+      /<meta property="og:url" content="https:\/\/hotspot\.octohirono\.dev\/" \/>/
+    );
+    assert.match(
+      generatedIndex,
+      /"@type":"WebPage","name":"Hotspot · 每日热榜"/
+    );
     assert.match(generatedIndex, /<link rel="icon" href="favicon\.ico" sizes="any" \/>/);
     assert.match(
       generatedIndex,
