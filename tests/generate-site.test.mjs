@@ -158,6 +158,10 @@ test("build enhances issue pages with archive link and SEO metadata", async () =
       leadHeadline.length > 0,
       "title should lead with the day's headline"
     );
+    // 标题质量：内联标签去空格 + 截断干净。
+    assert.doesNotMatch(titleText, /\d \. \d/); // 无 "4 . 8" 空格瑕疵
+    assert.doesNotMatch(titleText, /\d %/); // 无 "300 %" 空格瑕疵
+    assert.doesNotMatch(titleText, /[\s，、。；：·]…/); // 省略号前无悬空标点/空格
 
     assert.match(latestIssue, /href="\.\/"[^>]*>往期热点<\/a>/);
     assert.match(latestIssue, /<link rel="icon" href="\.\.\/favicon\.ico" sizes="any" \/>/);

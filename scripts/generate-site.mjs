@@ -49,10 +49,16 @@ function decodeEntities(value) {
     .replaceAll("&#39;", "'");
 }
 
+// 块级 / 换行标签需用空格分隔，内联标签（em/sup/strong/span/a/b/i…）则直接去掉，
+// 否则像 <em>4</em>.<em>8</em> 这种会被错误地变成 "4 . 8"。
+const BLOCK_TAG_PATTERN =
+  /<\/?(?:br|p|div|li|ul|ol|h[1-6]|section|article|header|footer|tr|td|th|blockquote)\b[^>]*>/gi;
+
 function cleanText(value) {
-  return decodeEntities(value.replace(/<[^>]+>/g, " "))
-    .replace(/\s+/g, " ")
-    .trim();
+  const withBlockBreaks = value
+    .replace(BLOCK_TAG_PATTERN, " ")
+    .replace(/<[^>]+>/g, "");
+  return decodeEntities(withBlockBreaks).replace(/\s+/g, " ").trim();
 }
 
 function escapeAttribute(value) {
@@ -65,6 +71,27 @@ function shortenDescription(value, maxLength = 160) {
   }
 
   return `${value.slice(0, maxLength - 1).trimEnd()}…`;
+}
+
+// 标题截断：优先在子句边界切断，并去掉末尾悬空标点，避免出现 "…相比 4.…" 式生硬截断。
+function truncateTitle(value, maxLength = 40) {
+  if (value.length <= maxLength) {
+    return value;
+  }
+
+  let cut = value.slice(0, maxLength);
+  const boundary = Math.max(
+    cut.lastIndexOf("，"),
+    cut.lastIndexOf("。"),
+    cut.lastIndexOf("、"),
+    cut.lastIndexOf("；"),
+    cut.lastIndexOf(" ")
+  );
+  if (boundary >= maxLength * 0.6) {
+    cut = cut.slice(0, boundary);
+  }
+  cut = cut.replace(/[\s，、。；：,.\-—·（(]+$/u, "");
+  return `${cut}…`;
 }
 
 function requireMatch(text, regex, label, filePath) {
@@ -222,11 +249,7 @@ function enhanceIssueHtml(
   );
 
   // 用当天主标题改写 <title>（SERP 里显示的就是它），取代千篇一律的日期模板。
-  const titleHeadline =
-    issue.headline.length > 40
-      ? `${issue.headline.slice(0, 39)}…`
-      : issue.headline;
-  const titleText = `${titleHeadline} | ${SITE_NAME} ${issue.dateString}`;
+  const titleText = `${truncateTitle(issue.headline)} | ${SITE_NAME} ${issue.dateString}`;
   html = upsertTag(
     html,
     /<title>[\s\S]*?<\/title>/,
