@@ -143,6 +143,22 @@ test("build enhances issue pages with archive link and SEO metadata", async () =
       )
     );
     assert.match(latestIssue, /<meta name="description" content="[^"]+"/);
+
+    // <title> 应以当天 headline 开头并带品牌+日期后缀，而不再是纯日期模板。
+    const titleMatch = latestIssue.match(/<title>([\s\S]*?)<\/title>/);
+    assert.ok(titleMatch, "issue page should have a <title>");
+    const titleText = titleMatch[1];
+    assert.match(titleText, / \| Hotspot 每日热榜 \d{4}-\d{2}-\d{2}$/);
+    assert.doesNotMatch(titleText, /^Hotspot · 每日热榜 · /);
+    const leadHeadline = titleText.replace(
+      / \| Hotspot 每日热榜 \d{4}-\d{2}-\d{2}$/,
+      ""
+    );
+    assert.ok(
+      leadHeadline.length > 0,
+      "title should lead with the day's headline"
+    );
+
     assert.match(latestIssue, /href="\.\/"[^>]*>往期热点<\/a>/);
     assert.match(latestIssue, /<link rel="icon" href="\.\.\/favicon\.ico" sizes="any" \/>/);
     assert.match(

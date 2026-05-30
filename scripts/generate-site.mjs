@@ -220,6 +220,19 @@ function enhanceIssueHtml(
     /<meta name="description" content="[^"]*"\s*\/?>/,
     descriptionTag
   );
+
+  // 用当天主标题改写 <title>（SERP 里显示的就是它），取代千篇一律的日期模板。
+  const titleHeadline =
+    issue.headline.length > 40
+      ? `${issue.headline.slice(0, 39)}…`
+      : issue.headline;
+  const titleText = `${titleHeadline} | ${SITE_NAME} ${issue.dateString}`;
+  html = upsertTag(
+    html,
+    /<title>[\s\S]*?<\/title>/,
+    `<title>${escapeHtml(titleText)}</title>`
+  );
+
   html = html.replace(
     /<a(?:\s+href="[^"]*")?>往期热点<\/a>/g,
     `<a href="${archiveLinkHref}">往期热点</a>`
