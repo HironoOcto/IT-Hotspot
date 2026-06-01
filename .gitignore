@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 public/
+wechat/
 
 # Package manager caches / logs
 .pnpm-store/
@@ -37,3 +38,5 @@ Thumbs.db
 SEO_AUDIT.md
 SEO_PLAN.md
 .claude/
+skills/
+CONTEXT.md
