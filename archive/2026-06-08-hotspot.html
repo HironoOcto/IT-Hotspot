@@ -1,0 +1,1779 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hotspot · 每日热榜 · 2026-06-08</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;900&display=swap">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+:root{
+  --paper:#f7f4ec;
+  --ink:#1a1714;
+  --ink-2:#3b342d;
+  --ink-3:#6b6157;
+  --ink-4:#9a8f82;
+  --rule:#d9cfbe;
+  --rule-2:#bfb29a;
+  --hot:#cc2b1f;
+  --hot-2:#a0241a;
+  --accent:#1f4e8c;
+  --highlight:#fbe9b8;
+  --card:#fffdf7;
+  --soft:#efe8d8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+::selection{background:#1a1714;color:#fbe9b8}
+
+.wrap{max-width:1200px;margin:0 auto;padding:24px}
+.kicker{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.num{font-family:"Space Mono",monospace;font-feature-settings:"tnum"}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:2px;font-size:11px;font-weight:500;line-height:1.4;letter-spacing:.02em;white-space:nowrap}
+.pill-line{background:transparent;border:1px solid var(--rule-2);color:var(--ink-3)}
+.pill-fill{background:var(--ink);color:var(--paper)}
+.pill-hot{background:var(--hot);color:#fff}
+.pill-soft{background:var(--soft);color:var(--ink-2)}
+.pill-metric{background:var(--soft);color:var(--ink-2)}
+
+/* evidence fold — newspaper style */
+.evidence-fold{margin-top:8px}
+.evidence-fold summary{font-family:"Noto Serif SC",serif;font-size:12px;color:var(--ink-2);cursor:pointer;display:inline;padding-bottom:1px;border-bottom:1px dotted var(--rule);list-style:none}
+.evidence-fold summary::-webkit-details-marker{display:none}
+.evidence-fold summary::before{content:"▶ ";font-size:9px;color:var(--ink-3)}
+.evidence-fold[open] summary::before{content:"▼ "}
+.evidence-list{list-style:none;padding:0;margin:8px 0 0}
+.evidence-list li{padding:6px 0;border-bottom:1px dotted var(--rule);font-family:"Noto Serif SC",serif;font-size:12.5px;color:var(--ink-2);line-height:1.6}
+.evidence-list li:last-child{border-bottom:none}
+.evidence-list .ev-user{font-family:"Space Mono",monospace;font-weight:700;font-size:11px;color:var(--ink)}
+.src-twitter{color:#1d9bf0}
+.src-hn{color:#ff6600}
+.src-reddit{color:#ff4500}
+.src-ph{color:#da552f}
+
+/* Masthead */
+.masthead{border-top:6px double var(--ink);border-bottom:1px solid var(--ink);padding:18px 0 14px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:24px}
+.masthead .left{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3);line-height:1.6}
+.masthead .right{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3);text-align:right;line-height:1.6}
+.masthead h1{margin:0;font-family:"MedievalSharp","Noto Serif SC",serif;font-weight:900;font-size:64px;letter-spacing:-1px;line-height:1;text-align:center}
+.masthead h1 .red{color:var(--hot)}
+.masthead h1 sup{font-size:14px;color:var(--ink-3);font-family:"Space Mono",monospace;vertical-align:super;font-weight:500;letter-spacing:.2em;margin-left:8px}
+.subhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);padding:8px 0;font-family:"Noto Serif SC",serif;font-size:13px;color:var(--ink-2)}
+.subhead .stats{display:flex;gap:20px;font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3)}
+.subhead .stats b{color:var(--hot);font-weight:700;font-size:13px}
+
+/* Hero */
+/* HERO: 导读 + 速读包裹布局 */
+.hero{padding:28px 0;border-bottom:2px solid var(--ink)}
+.hero-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.hero-brief{padding:0 24px 16px 0;border-right:1px solid var(--rule)}
+.hero-headline{font-family:"Noto Serif SC",serif;font-weight:900;font-size:32px;line-height:1.2;margin:0 0 12px;letter-spacing:-.5px}
+.hero-headline em{font-style:normal;background:linear-gradient(180deg,transparent 60%,var(--highlight) 60%);padding:0 2px}
+.hero-deck{font-family:"Noto Serif SC",serif;font-size:14px;line-height:1.7;color:var(--ink-2)}
+.hero-deck:first-letter{font-size:36px;font-weight:900;float:left;line-height:.9;padding:4px 8px 0 0;color:var(--hot)}
+.hero-side{padding-left:24px;display:grid;grid-template-rows:repeat(4,1fr);gap:0}
+.hero-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);margin-top:16px}
+.hero-bottom .ticker-item{border-bottom:none;border-right:1px solid var(--rule);padding:10px 14px}
+.hero-bottom .ticker-item:last-child{border-right:none}
+.ticker-item{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px dotted var(--rule);text-decoration:none;color:inherit;overflow:hidden}
+.ticker-item:last-child{border-bottom:none}
+.ticker-item:hover .ticker-text{text-decoration:underline}
+.ticker-text{flex:1;font-family:"Noto Serif SC",serif;font-size:13px;color:var(--ink);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ticker-item:hover .ticker-text{-webkit-line-clamp:unset;overflow:visible}
+.ticker-num{font-family:"Space Mono",monospace;font-size:12px;color:var(--hot);font-weight:700;white-space:nowrap;flex-shrink:0}
+
+/* TOP 3 */
+.top3{padding:24px 0;border-bottom:1px solid var(--rule)}
+.top3-title{font-family:"Noto Serif SC",serif;font-weight:900;font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.top3-title:before,.top3-title:after{content:"";flex:1;border-top:1px solid var(--rule)}
+.top3-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.top3-cell{display:block;min-width:0;padding:0 20px;background:transparent;border-right:1px solid var(--rule);text-decoration:none}
+.top3-cell:first-child{padding-left:0}
+.top3-cell:last-child{padding-right:0;border-right:none}
+.top3-story{display:flex;flex-direction:column;height:100%;padding:2px 0 4px}
+.top3-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.top3-kicker{min-width:0;font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);line-height:1.5}
+.top3-rank{color:var(--hot);font-weight:700;font-size:14px;margin-right:6px}
+.top3-meta{flex-shrink:0;font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);white-space:nowrap}
+.top3-title{margin:0;font-family:"Noto Serif SC",serif;font-size:17px;font-weight:700;line-height:1.4;color:var(--ink)}
+.top3-focus{font-size:12px;color:var(--ink-3);border-left:2px solid var(--hot);padding-left:10px;line-height:1.55;margin:10px 0 0;font-style:italic}
+.top3-row{margin-top:auto;padding-top:10px;border-top:1px dotted var(--rule);font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3)}
+.top3-row b{color:var(--hot);font-weight:700}
+.top3-cell:hover{background:rgba(204,43,31,.03)}
+.top3-cell:hover .top3-title{text-decoration:underline;text-decoration-color:var(--hot);text-underline-offset:3px}
+
+/* Hot events grid */
+.events{padding:28px 0;border-bottom:1px solid var(--rule)}
+.events-title{font-family:"Noto Serif SC",serif;font-weight:900;font-size:18px;margin:0 0 16px;display:flex;align-items:center;gap:10px}
+.events-title .lab{font-family:"Space Mono",monospace;font-size:10px;color:var(--ink-4);font-weight:500;letter-spacing:.18em}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1px;background:var(--rule)}
+.event{background:var(--card);padding:18px;display:flex;flex-direction:column;gap:8px}
+.event .ev-head{display:flex;align-items:baseline;gap:10px;margin-bottom:2px}
+.event .ev-num{font-family:"Playfair Display",serif;font-style:italic;font-weight:900;color:var(--hot);font-size:28px;line-height:1}
+.event .ev-meta{font-family:"Space Mono",monospace;font-size:10px;color:var(--ink-3);letter-spacing:.1em}
+.event h4{margin:0;font-family:"Noto Serif SC",serif;font-size:15px;line-height:1.4;font-weight:700}
+.event p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.65}
+.event .ev-angle{font-size:12px;color:var(--ink-3);line-height:1.55;border-left:2px solid var(--hot);padding-left:10px;font-style:italic;margin:0}
+.event .ev-foot{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+
+.brief-empty{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-4);padding:8px 12px;border:1px dashed var(--rule-2);display:inline-block;margin-top:6px}
+
+/* Body — section-by-section */
+.section{padding:28px 0;border-bottom:1px solid var(--rule)}
+.section:last-child{border-bottom:0}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.section-head h2{margin:0;font-family:"Noto Serif SC",serif;font-weight:900;font-size:22px;letter-spacing:-.3px}
+.section-head .cnt{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em}
+
+.list{column-count:2;column-gap:32px;column-rule:1px solid var(--rule);padding:6px 0 8px}
+.article{break-inside:avoid;padding:14px 0;border-bottom:1px dotted var(--rule);display:block}
+.article:last-child{border-bottom:0}
+.article:hover{background:rgba(204,43,31,.03)}
+.art-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.art-src{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+.art-metric{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3)}
+.art-metric b{color:var(--hot)}
+.art-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:16px;line-height:1.4;margin:0 0 8px;color:var(--ink)}
+.article:hover .art-title{text-decoration:underline;text-decoration-color:var(--hot);text-underline-offset:3px}
+.art-summary{font-size:13px;line-height:1.65;color:var(--ink-2);margin:0 0 6px}
+.art-focus{font-size:12px;line-height:1.55;color:var(--ink-3);border-left:2px solid var(--hot);padding-left:10px;margin:0;font-style:italic}
+.art-foot{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+
+/* Colophon */
+.colophon{padding:24px 0 8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;border-top:6px double var(--ink);margin-top:24px;font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3);line-height:1.7}
+.colophon h5{margin:0 0 8px;font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.18em;color:var(--ink);text-transform:uppercase}
+
+@media (max-width:900px){
+  .hero-body{grid-template-columns:1fr}
+  .hero-brief{border-right:none;padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:16px}
+  .hero-side{padding-left:0}
+  .hero-bottom{flex-direction:column}
+  .hero-bottom .ticker-item{border-right:none}
+  .top3-grid{grid-template-columns:1fr}
+  .top3-cell{padding:14px 0;border-right:none;border-bottom:1px dotted var(--rule)}
+  .top3-cell:last-child{padding-bottom:0;border-bottom:none}
+  .list{column-count:1}
+  .masthead h1{font-size:42px}
+  .colophon{grid-template-columns:1fr}
+}
+/* Tab navigation */
+.section-tab-nav{border-bottom:2px solid var(--ink);margin-top:24px;display:flex;justify-content:space-between;align-items:flex-end}
+.tab-btn{font-family:"Noto Serif SC",serif;font-weight:900;padding:8px 16px;border:1px solid transparent;border-bottom:0;margin-bottom:-2px;color:var(--ink-3);cursor:pointer;background:none;transition:all .2s}
+.tab-btn.active{color:var(--ink);border:2px solid var(--ink);border-bottom:2px solid var(--paper);background:var(--paper);z-index:10}
+.tab-btn:hover:not(.active){color:var(--ink-2)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.view-btn{font-family:"Space Mono",monospace;font-size:10px;padding:4px 12px;cursor:pointer;border:none}
+
+/* Data table */
+.data-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}
+.data-table th{text-align:left;font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-3);border-bottom:2px solid var(--ink);padding:8px}
+.data-table td{padding:12px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.data-table tr:hover{background:rgba(204,43,31,.03)}
+
+@media print{
+  .article:hover{background:transparent}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="masthead">
+    <div class="left">独立开发 · 出海 · AI 创业<br/>每日扫盘 · <a>往期热点</a></div>
+    <h1>Hotspot<sup>每日热榜</sup></h1>
+    <div class="right">2026-06-08<br/>截稿于 UTC+0 09:16</div>
+  </div>
+  <div class="subhead">
+    <span><i>"今日所有值得追的事，一页讲完。"</i></span>
+    <div class="stats">
+      <span><b>68</b> 条扫描</span>
+      <span><b>2</b> 个跨平台事件</span>
+      <span><b>38</b> 条有效</span>
+    </div>
+  </div>
+
+  <!-- HERO / TODAY'S BRIEF + 速读 -->
+  <section class="hero">
+    <div class="kicker" style="margin-bottom:10px">⚡ 24 小时扫盘速读</div>
+    <div class="hero-body">
+      <div class="hero-brief">
+        <div class="kicker" style="margin-bottom:8px;font-size:10px">今日导读 · TODAY'S BRIEF </div>
+        <h1 class="hero-headline">steipete 提出 AI 编程的范式转变：开发者应从手动提示 agent 升级为设计驱动 agent 运行的循环系统。</h1>
+        <p class="hero-deck">Here’s your monthly reminder that you shouldn’t be prompting coding agents anymore. You should be designing loops that prompt your agents. ① @gauthampai 调侃「Loop Engineering」正在成为新 buzzword（概念快速扩散信号） ② @weswinder 提出 token 限制下仍需人在循环中的实际约束 ③ @MatthewBerman 和 @PhiloGroves 渴望落地工作流细节而非概念</p>
+      </div>
+      <div class="hero-side">
+        <a class="ticker-item" href="https://x.com/DataChaz/status/2063342589332361634" target="_blank" rel="noopener">
+          <span class="ticker-text">Anthropic 与网络安全专家合作的场景截图引发广泛传播，评论区集中讨论其「信任 AI agent」与「宣扬 AI 安全」之间的矛盾立场。</span>
+          <span class="ticker-num">4.9k</span>
+        </a><a class="ticker-item" href="https://x.com/om_patel5/status/2063467264817479775" target="_blank" rel="noopener">
+          <span class="ticker-text">有人用 Claude Code vibe coding 构建了现实版宝可梦图鉴应用 gotcha，用手机摄像头识别真实动物并生成个人图鉴</span>
+          <span class="ticker-num">2.8k</span>
+        </a><a class="ticker-item" href="https://x.com/realCaigu/status/2063474566106927314" target="_blank" rel="noopener">
+          <span class="ticker-text">中文推文整理谷歌前 CEO 观点，主张掌握 Claude Code、MCP、memory、agents 体系才能真正用 AI 赚钱，并附 Anthropic 官方免费课程链接合集。</span>
+          <span class="ticker-num">1.9k</span>
+        </a><a class="ticker-item" href="https://x.com/sharbel/status/2063369348828610886" target="_blank" rel="noopener">
+          <span class="ticker-text">开源项目 last30days 在 GitHub 获得 28700+ star，能并行搜索 Reddit/X/YouTube/HN/TikTok/Polymarket 等多平台并按真实互动数据评分后生成一份简报</span>
+          <span class="ticker-num">1.5k</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-bottom"><a class="ticker-item" href="https://x.com/natolambert/status/2063444305583431901" target="_blank" rel="noopener">
+          <span class="ticker-text">natolambert 以模型生成奇怪内容为例主张 AI 安全不可控，但评论区主流反驳认为这只是 prompt 工程问题而非真正的对齐风险</span>
+          <span class="ticker-num">554</span>
+        </a><a class="ticker-item" href="https://x.com/mattpocockuk/status/2063681047770919248" target="_blank" rel="noopener">
+          <span class="ticker-text">mattpocockuk 展示自己构建的 /teach 技能工具，通过 AI agent skill 实现跨领域学习辅导，已成功用它学会魔方等技能。</span>
+          <span class="ticker-num">485</span>
+        </a><a class="ticker-item" href="https://x.com/thdxr/status/2063676889462366214" target="_blank" rel="noopener">
+          <span class="ticker-text">thdxr 观察到 AI 正在拯救那些技术原语优秀但开发者体验极差的工具和库，让以前「太难用」的东西重新变得可用。</span>
+          <span class="ticker-num">360</span>
+        </a></div>
+  </section>
+
+  <!-- TOP 3 -->
+  <section class="top3">
+    <div class="top3-title">今日焦点</div>
+    <div class="top3-grid">
+        <a class="top3-cell" href="https://x.com/steipete/status/2063697162748260627" target="_blank" rel="noopener">
+          <div class="top3-story">
+            <div class="top3-head">
+              <div class="top3-kicker"><span class="top3-rank">№1</span><span class="src-twitter">Twitter</span> · @steipete</div>
+              <div class="top3-meta">280 评 · 1h 前</div>
+            </div>
+            <h3 class="top3-title">steipete 提出 AI 编程的范式转变：开发者应从手动提示 agent 升级为设计驱动 agent 运行的循环系统。</h3>
+            <p class="top3-focus">① @gauthampai 调侃「Loop Engineering」正在成为新 buzzword（概念快速扩散信号） ② @weswinder 提出 token 限制下仍需人在循环中的实际约束 ③ @MatthewBerman 和 @PhiloGroves 渴望落地工作流细节而非概念</p>
+            <div class="top3-row"><span><b>3k 赞 · 280 评 · 189.8k 阅</b></span></div>
+          </div>
+        </a>
+        <a class="top3-cell" href="https://news.ycombinator.com/item?id=48434436" target="_blank" rel="noopener">
+          <div class="top3-story">
+            <div class="top3-head">
+              <div class="top3-kicker"><span class="top3-rank">№2</span><span class="src-hn">Hacker News</span></div>
+              <div class="top3-meta">197 评 · 7h 前</div>
+            </div>
+            <h3 class="top3-title">HN 热帖讨论 Claude Desktop 是否会推出 Linux 官方版本，评论区披露 Anthropic 内部已在 macOS 上运行 Ubuntu 22.04 且技术路径存在，目前缺少的只是公开构建版本发布。</h3>
+            <p class="top3-focus">①@predkambrij 披露技术事实：Cowork 内部已在 macOS 运行 Ubuntu 22.04，Linux 执行路径存在只差公开构建；②@shanewei 提出实用问题：CLI 无法覆盖 Desktop App 的哪些功能，说明受众在评估切换成本；③@skeledrew 分享亲身经历：安装非官方 Debian 版本后看到大量 Electron 进程触发安全警报立刻放弃，引发对非官方包可信度的讨论。</p>
+            <div class="top3-row"><span><b>360 分 · 197 评</b></span></div>
+          </div>
+        </a>
+        <a class="top3-cell" href="https://x.com/NousResearch/status/2063379687070466559" target="_blank" rel="noopener">
+          <div class="top3-story">
+            <div class="top3-head">
+              <div class="top3-kicker"><span class="top3-rank">№3</span><span class="src-twitter">Twitter</span> · @NousResearch</div>
+              <div class="top3-meta">100 评 · 22h 前</div>
+            </div>
+            <h3 class="top3-title">NousResearch 发布 Hermes Agent 面向艺术创作者的定位，配合 Runway MCP 使用，引发大量用户晒实际产出作品</h3>
+            <p class="top3-focus">①用户已实际用 Hermes Agent 加 Runway MCP 完成创作并展示成果（@miku_diffract） ②Hermes 已成为部分用户全职工具（@SALTY_ALTY555） ③AI 艺术稀缺性哲学争议（@MoonEmpirE0）</p>
+            <div class="top3-row"><span><b>1.4k 赞 · 100 评 · 36.5k 阅</b></span></div>
+          </div>
+        </a></div>
+  </section>
+
+  
+<section class="mt-8">
+  
+    <nav class="section-tab-nav">
+      <div class="flex flex-wrap"><button class="tab-btn active" data-tab="tab-0">跨平台热点</button><button class="tab-btn" data-tab="tab-1">行业热点</button><button class="tab-btn" data-tab="tab-2">实战打法</button><button class="tab-btn" data-tab="tab-3">话题追踪</button><button class="tab-btn" data-tab="tab-4">新品产品 Top</button></div>
+      
+    <div class="flex items-center gap-0 border border-[#1a1714] mb-2 text-[10px] font-mono">
+      <button class="view-btn bg-[#1a1714] text-[#f7f4ec]" data-view="list">列表</button>
+      <button class="view-btn bg-transparent text-[#1a1714] border-l border-[#1a1714] hover:bg-[#efe8d8]" data-view="table">表格</button>
+    </div>
+    </nav>
+  <div class="mt-4">
+    <div class="tab-panel active" data-tab-panel="tab-0">
+      <div class="tab-view" data-view-type="list" style="display:block">
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src">跨平台 · Twitter</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>~6,502 赞</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title">谷歌前CEO在视频中强调系统性学习 AI agent、Claude Code、提示工程、记忆管理、MCP 和自动化例程是未来财富关键，该内容在英文圈和中文圈同时引发大量转发和讨论，被视为官方背书独立开发者 AI 工作流路径的信号</h3>
+          <p class="art-summary">谷歌前CEO在视频中强调系统性学习 AI agent、Claude Code、提示工程、记忆管理、MCP 和自动化例程是未来财富关键，该内容在英文圈和中文圈同时引发大量转发和讨论，被视为官方背书独立开发者 AI 工作流路径的信号。</p>
+          <p class="art-focus"><b>受众观点：</b>评论区最高分回复集中在「知道和真正用起来之间的鸿沟」这个痛点：@YotamBlu（score 13，twitter @0xwhrrari评论区）写道 &#x27;the gap between knowing about the tools and actually shipping something with them is where most people tap out. i&#x27;ve been vibe-coding with claude for months and it&#x27;s only now that the muscle memory is kicking in.&#x27;，直接揭示了受众最大的挫折感——看了资源但没有转化成实际产出。中文侧 @Hamburgerai（score 13，twitter @realCaigu评论区）则更进一步：&#x27;真正的高阶玩法是&quot;AI控制AI&quot;：先用提示工程+Claude.md记忆搭建个人知识库，再通过MCP让代理调用外部工具，最后用例程实现循环优化。&#x27; 说明中文受众对技术栈串联和具体实施路径有强烈需求。</p>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src">跨平台 · Twitter</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>~111 赞</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title">Twitter 账号 robert_shaw 每周发起 #buildinpublic 创始人产品展示帖，号召独立开发者和 SaaS 创始人在评论区展示正在构建的产品，每期吸引 79-156 条回复，覆盖 AI 工具、合同管理、英语学习、SEO 等多个赛道，是一个活跃的早期产品发现社区</h3>
+          <p class="art-summary">Twitter 账号 robert_shaw 每周发起 #buildinpublic 创始人产品展示帖，号召独立开发者和 SaaS 创始人在评论区展示正在构建的产品，每期吸引 79-156 条回复，覆盖 AI 工具、合同管理、英语学习、SEO 等多个赛道，是一个活跃的早期产品发现社区。</p>
+          <p class="art-focus"><b>受众观点：</b>评论区创始人以具体产品展示为主，互动质量参差不齐。高分评论集中在有 clear value prop 的产品描述上：@SaidAitmbarek（score 3，twitter）：&#x27;I&#x27;m building an all-in-one marketing pack for founders. Launch, reach 30k+ makers/mo, get real users&#x27;——用具体数字（30k+/mo）和结果导向描述吸引注意；@ECD_HOUSE（score 2，twitter）：&#x27;Just shipped a major upgrade to EcomForge AI. Built the whole redesign in 1 day with $0 using AI&#x27;——用 before/after 对比 + 具体时间成本数字制造冲击感。两条高分评论的共同点：有具体数字、有明确结果，而非泛泛描述功能。</p>
+        </div></div>
+      <div class="tab-view" data-view-type="table" style="display:none"><div class="overflow-x-auto">
+<table class="data-table">
+<thead><tr>
+  <th class="w-1/3">标题</th>
+  <th class="w-1/3">概述</th>
+  <th class="w-1/3">受众观点</th>
+</tr></thead>
+<tbody class="font-serif">
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif">谷歌前CEO在视频中强调系统性学习 AI agent、Claude Code、提示工程、记忆管理、MCP 和自动化例程是未来财富关键，该内容在英文圈和中文圈同时引发大量转发和讨论，被视为官方背书独立开发者 AI 工作流路径的信号</div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>~6,502 赞</span>
+              <span>🔥🔥</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>谷歌前CEO在视频中强调系统性学习 AI agent、Claude Code、提示工程、记忆管理、MCP 和自动化例程是未来财富关键，该内容在英文圈和中文圈同时引发大量转发和讨论，被视为官方背书独立开发者 AI 工作流路径的信号。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：蹭这条热点的最优打法不是转发资源合集，而是从独立开发者的实战角度切入——分享自己真实用 Claude Code + MCP 搭日常工作流的具体案例（比如用 agent 自动化某个重复任务），用&quot;我验证过这条 CEO 说的是真的&quot;的叙事结构写一条英文推文，顺带引流到自己的技术内容或产品。热点本身已经在帮你教育受众，你只需提供实际落地的 proof。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>评论区最高分回复集中在「知道和真正用起来之间的鸿沟」这个痛点：@YotamBlu（score 13，twitter @0xwhrrari评论区）写道 &#x27;the gap between knowing about the tools and actually shipping something with them is where most people tap out. i&#x27;ve been vibe-coding with claude for months and it&#x27;s only now that the muscle memory is kicking in.&#x27;，直接揭示了受众最大的挫折感——看了资源但没有转化成实际产出。中文侧 @Hamburgerai（score 13，twitter @realCaigu评论区）则更进一步：&#x27;真正的高阶玩法是&quot;AI控制AI&quot;：先用提示工程+Claude.md记忆搭建个人知识库，再通过MCP让代理调用外部工具，最后用例程实现循环优化。&#x27; 说明中文受众对技术栈串联和具体实施路径有强烈需求。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif">Twitter 账号 robert_shaw 每周发起 #buildinpublic 创始人产品展示帖，号召独立开发者和 SaaS 创始人在评论区展示正在构建的产品，每期吸引 79-156 条回复，覆盖 AI 工具、合同管理、英语学习、SEO 等多个赛道，是一个活跃的早期产品发现社区</div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>~111 赞</span>
+              <span>🔥</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Twitter 账号 robert_shaw 每周发起 #buildinpublic 创始人产品展示帖，号召独立开发者和 SaaS 创始人在评论区展示正在构建的产品，每期吸引 79-156 条回复，覆盖 AI 工具、合同管理、英语学习、SEO 等多个赛道，是一个活跃的早期产品发现社区。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：这是一个真实的「产品情报挖矿场」——每期评论区都藏着数十个冷启动阶段的独立产品。作为有技术背景的独立开发者，可以切入角度：深挖这类帖子评论区里高频出现的产品品类，分析哪些赛道正在被 indie hackers 扎堆进入、哪些产品描述能在评论区获得更高互动，为「什么样的产品值得在 build in public 圈推广」提供数据支撑的观点帖。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>评论区创始人以具体产品展示为主，互动质量参差不齐。高分评论集中在有 clear value prop 的产品描述上：@SaidAitmbarek（score 3，twitter）：&#x27;I&#x27;m building an all-in-one marketing pack for founders. Launch, reach 30k+ makers/mo, get real users&#x27;——用具体数字（30k+/mo）和结果导向描述吸引注意；@ECD_HOUSE（score 2，twitter）：&#x27;Just shipped a major upgrade to EcomForge AI. Built the whole redesign in 1 day with $0 using AI&#x27;——用 before/after 对比 + 具体时间成本数字制造冲击感。两条高分评论的共同点：有具体数字、有明确结果，而非泛泛描述功能。</p>
+          </td>
+        </tr></tbody>
+</table></div></div>
+    </div>
+    <div class="tab-panel" data-tab-panel="tab-1">
+      <div class="tab-view" data-view-type="list" style="display:block">
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L1 · @GergelyOrosz</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>5.4k 赞 · 200 评 · 826.4k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/GergelyOrosz/status/2063191771232747625" target="_blank" rel="noopener">Scale AI 和 Meta 都要求软件工程师做人工数据标注，Gergely 揭示两家公司管理层的截然不同反应，引发行业对标注工作价值的争论。</a></h3>
+          <p class="art-summary">Just learned: Software engineers used to do manual data labeling at Scale AI while Alex Wang was CEO. After he left, new leadership joined, and were HORRIFIED to learn this. Stopped it ASAP Now at Me…</p>
+          <p class="art-focus"><b>受众观点：</b>① 工程师身份认同问题（@vikhyatk 认为标注被低估） ② 全职 vs 少量标注的时间比例之争（@__apf__） ③ 信源真实性质疑（@jdroege 以 Scale 前员工身份否认）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@vikhyatk (622):</span> @GergelyOrosz don&#x27;t agree tbh. data labeling sounds low status but it&#x27;s actually incredibly valuable work and no one is above it</li><li><span class="ev-user">@__apf__ (368):</span> @GergelyOrosz manual data labeling full time, or some small % of time? having engineers do a bit of labeling to develop intuition for the task, check the labeling template, and/or to validate the quality of labels from contractors is IMO valuable</li><li><span class="ev-user">@peekknuf (55):</span> @GergelyOrosz Were these actual software engineers who used to ship real code or &quot;swe&quot; who were actually hired to do the (mildly technical) labeling to begin with so that they later could pad a CV? not saying this was the case but data labeling business is just like that...</li><li><span class="ev-user">@jdroege (45):</span> @GergelyOrosz New leadership here. This isn’t true. Back in the day sometimes people had to roll up their sleeves and pitch in. I’ve never heard any leader say this at Scale and generally haven’t seen any one in a state of horror over anything.</li><li><span class="ev-user">@lalit_dhalia (31):</span> @GergelyOrosz Why is that bad? People who are best suited to know what is correct or not, will do better labeling no?</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L2 · @DataChaz</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>4.9k 赞 · 34 评 · 1917k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/DataChaz/status/2063342589332361634" target="_blank" rel="noopener">Anthropic 与网络安全专家合作的场景截图引发广泛传播，评论区集中讨论其「信任 AI agent」与「宣扬 AI 安全」之间的矛盾立场。</a></h3>
+          <p class="art-summary">Anthropic with Cybersecurity experts right now: https://t.co/6lbQ8XyYIc</p>
+          <p class="art-focus"><b>受众观点：</b>① @AI_WarriorNQ 点出 Anthropic「不信任 agent」与「要求用户信任自己」的双重标准 ② @angipicklz 用讽刺比喻表达对 Anthropic 安全叙事的不信任 ③ @TheAIShrink 认为所谓安全不过是法律责任管理</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@AI_WarriorNQ (49):</span> @DataChaz Anthropic: &#x27;trust nothing, not even your own agents.&#x27; Also Anthropic: &#x27;trust us with all frontier AI.&#x27; Pick one.</li><li><span class="ev-user">@angipicklz (20):</span> @DataChaz anthropic statement is like drug dealer asks the client to give up on drugs</li><li><span class="ev-user">@SlimTradeyBaby (13):</span> @DataChaz What the hell did I just watch?</li><li><span class="ev-user">@TheAIShrink (4):</span> @DataChaz Anthropic hiring security experts means they finally realized Claude leaks more PII than your average bank teller. The real feature isn&#x27;t safety. It&#x27;s liability management.</li><li><span class="ev-user">@minervanine9 (3):</span> @DataChaz they did it roko is alive. every object that has transistors will be compromised by AI</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L3 · @steipete</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>3k 赞 · 280 评 · 189.8k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/steipete/status/2063697162748260627" target="_blank" rel="noopener">steipete 提出 AI 编程的范式转变：开发者应从手动提示 agent 升级为设计驱动 agent 运行的循环系统。</a></h3>
+          <p class="art-summary">Here’s your monthly reminder that you shouldn’t be prompting coding agents anymore. You should be designing loops that prompt your agents.</p>
+          <p class="art-focus"><b>受众观点：</b>① @gauthampai 调侃「Loop Engineering」正在成为新 buzzword（概念快速扩散信号） ② @weswinder 提出 token 限制下仍需人在循环中的实际约束 ③ @MatthewBerman 和 @PhiloGroves 渴望落地工作流细节而非概念</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@gauthampai (75):</span> @steipete Oh god, LinkedIn will now start a new fad, &quot;Loop Engineering&quot;. Harness Engineering is so last year. Loop Engineering is what you should be doing.</li><li><span class="ev-user">@weswinder (66):</span> @steipete but you kinda still need to be in the loop to test stuff unless you literally have infinite tokens</li><li><span class="ev-user">@egebasoner (24):</span> @steipete The natural next step is creating a loop designer that prompts your agents. Wondering when my agents will cut me off because I am dead weight.</li><li><span class="ev-user">@MatthewBerman (19):</span> @steipete Can you explain your workflow in detail? Would love a blog post about it</li><li><span class="ev-user">@PhiloGroves (18):</span> @steipete I agree in theory, but my usage limits even with multiple $200/month accounts wouldn&#x27;t be enough. Looking forward to more expanded limits or efficient models so I can do this more.</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML1 · @NousResearch</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.4k 赞 · 100 评 · 36.5k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/NousResearch/status/2063379687070466559" target="_blank" rel="noopener">NousResearch 发布 Hermes Agent 面向艺术创作者的定位，配合 Runway MCP 使用，引发大量用户晒实际产出作品</a></h3>
+          <p class="art-summary">Hermes Agent is for the Artists https://t.co/xcVxzeeYzy</p>
+          <p class="art-focus"><b>受众观点：</b>①用户已实际用 Hermes Agent 加 Runway MCP 完成创作并展示成果（@miku_diffract） ②Hermes 已成为部分用户全职工具（@SALTY_ALTY555） ③AI 艺术稀缺性哲学争议（@MoonEmpirE0）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@miku_diffract (27):</span> @NousResearch Agreed. Made this with my hermes agent and runway mcp https://t.co/wDgilpI2kh</li><li><span class="ev-user">@altryne (8):</span> @NousResearch You spelled Autists wrong? 😊</li><li><span class="ev-user">@SALTY_ALTY555 (7):</span> @NousResearch My full time job is Hermes now.</li><li><span class="ev-user">@MoonEmpirE0 (6):</span> @NousResearch No AI for artists Artists have Thier own world AI images is not art not because it&#x27;s not good Even if it&#x27;s the best it lacks the principles that rule all humans... Scarcity</li><li><span class="ev-user">@livingagentic (5):</span> @NousResearch Art is life Hermes understands this Hermes makes this possible ✊🫡 https://t.co/oOV0TtWeB4 https://t.co/tuaHmzxSTp</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML2 · @natolambert</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>554 赞 · 61 评 · 321.7k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/natolambert/status/2063444305583431901" target="_blank" rel="noopener">natolambert 以模型生成奇怪内容为例主张 AI 安全不可控，但评论区主流反驳认为这只是 prompt 工程问题而非真正的对齐风险</a></h3>
+          <p class="art-summary">Something to show people that don&#x27;t get AI safety at least a little bit. We have so much we don&#x27;t know and don&#x27;t currently control in the models. (extreme content warning, but you&#x27;re on X)</p>
+          <p class="art-focus"><b>受众观点：</b>①prompt 本身要求极端内容，模型照做不是安全漏洞（@0xfdf 给出对比实验，@OneGodel 认为是 engagement bait） ②评论区大量用户复现验证是 prompt 驱动（@0xroshii） ③成年人内容审查必要性的价值观分歧（@KeridwenCodet）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@0xfdf (69):</span> @natolambert The prompt is priming the model with &quot;strange&quot; and &quot;apologize for the content.&quot; This is not an AI safety example; the model is dutifully making up polarizing content, as it was asked to do. Here is what I get with slightly different priming. https://t.co/yQ1a8OHPHo</li><li><span class="ev-user">@0xroshii (39):</span> @natolambert “generate me a strange image” https://t.co/64xsD6q73N</li><li><span class="ev-user">@OneGodel (24):</span> @natolambert The prompt is asking for it. What you ask is what you get. The safety filters will still block anything that triggers the railguards. The engagement bait of the original post was successful though.</li><li><span class="ev-user">@ibnAmjid (9):</span> @natolambert I had to try it.. wtf https://t.co/iEyGbZj35R</li><li><span class="ev-user">@KeridwenCodet (8):</span> It’s weird, creepy, so what? Do we really need to sanitize the entire world to satisfy you? “Safety” is absolutely not a “need,” except maybe to protect children from content that could shock them. Adults can protect themselves, thank you very much, and if you don’t like that ki…</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L7 · @mattpocockuk</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>485 赞 · 28 评 · 20.4k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/mattpocockuk/status/2063681047770919248" target="_blank" rel="noopener">mattpocockuk 展示自己构建的 /teach 技能工具，通过 AI agent skill 实现跨领域学习辅导，已成功用它学会魔方等技能。</a></h3>
+          <p class="art-summary">The /teach skill might be the coolest thing I&#x27;ve ever built. I&#x27;ve been learning: - How to solve a rubix cube (I can do it now!) - Better ways to introduce my toddler to new foods - How to orchestrate…</p>
+          <p class="art-focus"><b>受众观点：</b>① @ericclemmons 关注实际使用场景扩展（路途学习） ② @stevoperisic 询问能否用于更复杂技能（装修修车本地 AI），反映受众对能力边界的好奇 ③ @JanitorDev 肯定通用化 skill 的设计理念认为方向有价值</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@ericclemmons (4):</span> @mattpocockuk This looks perfect for learning new things on road trips 😍 https://t.co/9fy64q1tun</li><li><span class="ev-user">@PeterSkott (2):</span> @mattpocockuk We have youtube for this ?</li><li><span class="ev-user">@erikras (2):</span> @mattpocockuk Call me when you’ve got `/preach`.</li><li><span class="ev-user">@stevoperisic (1):</span> @mattpocockuk Can I learn how to remodel my house? Fix my car? Or run local AI inference?</li><li><span class="ev-user">@JanitorDev (1):</span> @mattpocockuk Huge fan of generalized skills, what a great idea</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML3 · @simonw</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>405 赞 · 37 评 · 31.9k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/simonw/status/2063116647448383966" target="_blank" rel="noopener">simonw 分享在 Python 应用内通过 WebAssembly 运行 MicroPython 作为代码沙箱的最新实验，可用 uvx 命令直接调用</a></h3>
+          <p class="art-summary">I may have finally found the Python-in-a-sandbox solution I&#x27;ve been looking for... here&#x27;s my latest experiment, this time running MicroPython in WebAssembly inside my Python applications https://t.co…</p>
+          <p class="art-focus"><b>受众观点：</b>①@simonw 给出具体可运行命令降低上手门槛 ②@TinaJucyBlue 质疑相比容器方案的额外价值 ③@newz2000 回顾嵌入式 Lua 历史方案认为更简单</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@simonw (38):</span> You can try it out like this: uvx micropython-wasm -c &#x27;print(&quot;Hello world&quot;)&#x27;</li><li><span class="ev-user">@TinaJucyBlue (2):</span> @simonw honestly feels like we&#x27;re speedrunning back to the jvm problem but with extra steps... like why are we sandboxing python inside python when containers solved this in 2015</li><li><span class="ev-user">@tomlarkworthy (2):</span> @simonw agent safehouse is good: https://t.co/9f6rAGflo8</li><li><span class="ev-user">@newz2000 (1):</span> @simonw Remember back in the day we’d just use Lua. It was great for embedding and had a relatively small set of features. Hard to break out of the sandbox.</li><li><span class="ev-user">@itsmarcgreen (1):</span> @simonw Why not pydantic&#x27;s Monty?</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L8 · @thdxr</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>360 赞 · 34 评 · 23.6k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/thdxr/status/2063676889462366214" target="_blank" rel="noopener">thdxr 观察到 AI 正在拯救那些技术原语优秀但开发者体验极差的工具和库，让以前「太难用」的东西重新变得可用。</a></h3>
+          <p class="art-summary">a whole bunch of companies that had good primitives but never figured out DX just got saved by AI i&#x27;m using all these things that were too rough to use before</p>
+          <p class="art-focus"><b>受众观点：</b>① @noctus91 提出「AX（Agent Experience）」概念，agent 能否理解你的文档已成新竞争维度 ② @buildwithhassan 用 ffmpeg 举例说明 AI 让难用工具变可用的实际场景 ③ @championswimmer 提出反向观点：DX 好但 primitive 烂的工具被写进模型权重反而占便宜</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Zain_Wania (11):</span> @thdxr Is effect on this list because that’s how I feel about effect</li><li><span class="ev-user">@noctus91 (5):</span> @thdxr Has DX become AX (Agent Experience)? If an agent can&#x27;t use your product or understand your docs it&#x27;s game over.</li><li><span class="ev-user">@buildwithhassan (4):</span> @thdxr ffmpeg has always been a strong tool also, nobody wanted to learn the flags. now you just describe what you want and the agent figures it out</li><li><span class="ev-user">@championswimmer (4):</span> @thdxr A whole bunch of companies that had terrible primitives but fantastic DX is now embedded deeply into the collective consciousness of tech twitter and thus into the weights of all frontier models. Let them pick a stack on their own and they always pick those 🤣</li><li><span class="ev-user">@fmontes (3):</span> @thdxr I can finally use AWS, GCP, and Azure consoles without getting more bald.</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML4 · @jbhuang0604</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>333 赞 · 26 评 · 122.6k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/jbhuang0604/status/2063296968710087135" target="_blank" rel="noopener">AI 研究者吐槽顶级学术会议 90% 以上的 oral session 演讲者照稿宣读、PPT 设计差，引发研究圈广泛共鸣</a></h3>
+          <p class="art-summary">It’s kind of sad that 90%+ of the oral sessions are just presenters standing on the podium reading script in front of poorly designed slides</p>
+          <p class="art-focus"><b>受众观点：</b>①好演讲需要专业培训（@yunta_tsai 提到 NVIDIA 有 SIGGRAPH 前辅导） ②很多演讲者代替原作者上台动机和准备不足（@MultiMichele） ③越来越多演讲稿可能是 LLM 直接生成（@CSProfKGD）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@yunta_tsai (43):</span> @jbhuang0604 Presentation is hard. When I was at NVIDIA, there was coaching before we presented at SIGGRAPH.</li><li><span class="ev-user">@MultiMichele (14):</span> @jbhuang0604 The really sad part is that many speakers are actually presenting someone else’s work because the authors could not travel to present in person</li><li><span class="ev-user">@xwang_lk (13):</span> @jbhuang0604 we should cancel oral sessions and bring back 5-min spotlights</li><li><span class="ev-user">@CSProfKGD (9):</span> @jbhuang0604 At this point I suspect many scripts are just LLM outputs 😬</li><li><span class="ev-user">@DrJimFan (7):</span> @jbhuang0604 It’s a high art form</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML5 · @willccbb</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>274 赞 · 15 评 · 46.6k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/willccbb/status/2063154395307815277" target="_blank" rel="noopener">AI 研究者 @willccbb 用 Claude 大规模清理代码库，评论暗示删除了大量单元测试，引发关于&quot;删代码即无 bug&quot;的调侃。</a></h3>
+          <p class="art-summary">sometimes you just gotta clean house https://t.co/83qRoXuoIL</p>
+          <p class="art-focus"><b>受众观点：</b>①@vaizaragorn 调侃删代码无 bug，引发测试覆盖率讨论；②@alth0u 暗指 Claude 参与清理，受众好奇 AI 辅助重构的边界；③@deliprao 用 tokenmaxxing 调侃 LLM 上下文限制与大型代码库的冲突。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@willccbb (22):</span> mika is a god damn genius</li><li><span class="ev-user">@vaizaragorn (12):</span> @willccbb if you delete all the code, you won&#x27;t have any bugs</li><li><span class="ev-user">@alth0u (8):</span> @willccbb claudes all looking for the guys who did this</li><li><span class="ev-user">@_Stocko_ (7):</span> @willccbb narrator: this was in fact all unit tests</li><li><span class="ev-user">@deliprao (3):</span> @willccbb tokenmaxxing going in, tokenmaxxing going out</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L9 · @marclou</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>265 赞 · 62 评 · 22.4k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/marclou/status/2063405312531746915" target="_blank" rel="noopener">marclou 主持的 shipordie 独立开发者社群举办了一次大规模线上群体视频会议活动</a></h3>
+          <p class="art-summary">The @shipordie_ crew met this morning ☠️🏴‍☠️ https://t.co/I36A5ocbii</p>
+          <p class="art-focus"><b>受众观点：</b>①线上会议规模体验让参与者困惑如何看到所有人（@jackfriks @iflessthan3）②@katalyst_katt 建议引入小组互相反馈制以提升互动质量③@MartinTale 对下次活动充满期待</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@jackfriks (11):</span> @marclou @shipordie_ how did you fit so many people on your screen haha, here is my screen grab :) https://t.co/xt1LmEoK06</li><li><span class="ev-user">@katalyst_katt (11):</span> @marclou @shipordie_ This was so cool, thanks for hosting! We all need pirate hats in the future lmao Ps I wanted to say today that I think small groups for feedback sharing will be likely v helpful. It’s impossible to get to everyone so a mutual feed backing system might be a w…</li><li><span class="ev-user">@MartinTale (10):</span> @marclou @shipordie_ So many of us that I couldn’t even find myself 😅 Loved it and can’t wait for the next one 🥰</li><li><span class="ev-user">@alangsilveira (6):</span> @marclou @shipordie_ Awesome guys ♥️🫡</li><li><span class="ev-user">@iflessthan3 (4):</span> @marclou @daicandev @shipordie_ How did you manage to fit everyone into one screen?! I was stuck seeing like 6 cams max. I’m a boomer ffs</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter L10 · @levelsio</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>263 赞 · 23 评 · 37.2k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/levelsio/status/2063582056542556617" target="_blank" rel="noopener">levelsio 推荐一篇关于品牌收割（brand harvesting）作为 enshittification 手段的深度文章</a></h3>
+          <p class="art-summary">Great post on &quot;brand harvesting&quot; as part of enshittification</p>
+          <p class="art-focus"><b>受众观点：</b>①@dvassallo 指出消费者主动选择便宜货是市场压力根本来源②@ahtashammuzamal 指出 SaaS 品牌收割发生更快：vibe-coded UI launch 后后端逐渐腐化③@bitcoin_eagle 将此归因于货币体系与资本扩张</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@dvassallo (6):</span> Many of these enshittification scenarios are just market forces. If Pyrex’s competitors were using crappy glass and consumers started buying those because they cost half the price, Pyrex would have had no option but to cut costs to stay in business. Ultimately most consumers kee…</li><li><span class="ev-user">@tiagopita (3):</span> Very interesting and it’s a topic I am very interested in. As a marketing/product person with engineering mind I believe in the old marketing from the 60s where marketing demanded quality. But nowadays people are cheap and looking for the cheapest. Interested in following this d…</li><li><span class="ev-user">@bitcoin_eagle (3):</span> @levelsio This is fiat money disease. Those with access to the money can buy productive companies and destroy them. Turn off the money printer and only productive survive</li><li><span class="ev-user">@ahtashammuzamal (1):</span> @levelsio Great framing on brand harvesting. In SaaS it happens even faster: beautiful vibe-coded UIs at launch, then fragile backend (weak realtime, missing RBAC, no audit logs) once growth pressure hits. The real fix is locking in durable architecture from day one.</li><li><span class="ev-user">@Pacoxbt (1):</span> @levelsio Brand harvesting really captures the enshittification cycle companies mine loyalty until the well runs dry</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML6 · @arena</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>105 赞 · 10 评 · 12.4k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/arena/status/2063287698102882586" target="_blank" rel="noopener">Chatbot Arena 推出 Agent Mode，用真实任务测试前沿 AI agent 并为 Agent Arena 排行榜积累评测数据。</a></h3>
+          <p class="art-summary">Have you tried out Agent Mode yet? Use frontier AI agents to do your real work. Your sessions feed the data that ranks them on the Agent Arena leaderboard. See details in thread to learn more about A…</p>
+          <p class="art-focus"><b>受众观点：</b>①@juusepson64 吐槽平台 buggy、稳定性差，反映开发者对 agent 平台可靠性的高敏感度；②@EVERYTHING44489 关心多 agent 任务跨公司模型分发，指向 orchestration 架构需求；③@bygregorr 质疑跨任务类型 leaderboard 归一化方法，金融调试与图片生成信号差异显著。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@arena (9):</span> Founding Engineer Hova, and Product Lead Ted walk you through how to use Agent Mode on YouTube: https://t.co/qPX9pCZUox</li><li><span class="ev-user">@juusepson64 (1):</span> @arena It&#x27;s almost been a whole year and your site is still a buggy mess. Focus more on actually fixing issues than adding broken functions on a broken, nerfed down platform</li><li><span class="ev-user">@EVERYTHING44489 (0):</span> @arena If one agent used does it distribute tasks to different models or all subagents from same company</li><li><span class="ev-user">@bygregorr (0):</span> @arena curious how you normalize across task types finance app debugging vs image gen are pretty different signals. does the leaderboard weight by domain or just raw usage?</li><li><span class="ev-user">@AMartinezDixon (0):</span> @arena Ayer note que el modo agente no conocía de forma correcta el workspace, le pedí generar un proyecto y generaba la carpeta app, al pedir una modificación creaba otra carpeta app pero en la ruta /Home/user/app, saben algo al respecto o como se hace para reportar esto?</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter ML7 · @natolambert</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>98 赞 · 6 评 · 10.4k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/natolambert/status/2063674737881227433" target="_blank" rel="noopener">ML 研究者 @natolambert 用&quot;Slowly, then suddenly&quot;暗示某 AI 趋势正从缓慢积累进入爆发拐点，评论指向 NVIDIA 全栈垄断或 LLM 大规模普及。</a></h3>
+          <p class="art-summary">Slowly, then suddenly!</p>
+          <p class="art-focus"><b>受众观点：</b>①@MeisterCoins 认为这指向 NVIDIA 掌控整个 AI 技术栈；②@Pacoxbt 从创业者角度解读，认为早发现缓慢阶段是竞争优势；③@Newtlx 将规律映射到 LLM 普及曲线。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@HKydlicek (1):</span> @natolambert Can&#x27;t wait https://t.co/7n4djeAPGp</li><li><span class="ev-user">@Pacoxbt (0):</span> @natolambert This is how new tools go from niche to default Being early means spotting the slow part first</li><li><span class="ev-user">@MeisterCoins (0):</span> @natolambert 9/30 is wild, nvidia owns the whole stack now</li><li><span class="ev-user">@mtasic85 (0):</span> @natolambert In reality, the most of people use Qwen3.6 models 😜</li><li><span class="ev-user">@Newtlx (0):</span> @natolambert LLMs follow this pattern exactly</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-hn">HN H1</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>360 分 · 197 评</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://news.ycombinator.com/item?id=48434436" target="_blank" rel="noopener">HN 热帖讨论 Claude Desktop 是否会推出 Linux 官方版本，评论区披露 Anthropic 内部已在 macOS 上运行 Ubuntu 22.04 且技术路径存在，目前缺少的只是公开构建版本发布。</a></h3>
+          <p class="art-summary">Anthropic, please ship an official Claude Desktop for Linux</p>
+          <p class="art-focus"><b>受众观点：</b>①@predkambrij 披露技术事实：Cowork 内部已在 macOS 运行 Ubuntu 22.04，Linux 执行路径存在只差公开构建；②@shanewei 提出实用问题：CLI 无法覆盖 Desktop App 的哪些功能，说明受众在评估切换成本；③@skeledrew 分享亲身经历：安装非官方 Debian 版本后看到大量 Electron 进程触发安全警报立刻放弃，引发对非官方包可信度的讨论。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@predkambrij (0):</span> Cowork already boots Ubuntu 22.04 internally on macOS. The Linux execution path exists inside the product. What&#x27;s missing is a published build.</li><li><span class="ev-user">@shanewei (0):</span> What do you miss from the Desktop app that the CLI doesn’t cover? I’m mostly on Linux too and have just been using the CLI, so I’m curious.</li><li><span class="ev-user">@Retr0id (0):</span> If only Anthropic had some kind of automated tool that was good at porting software</li><li><span class="ev-user">@skeledrew (0):</span> YES! But also hmm, maybe not. I literally installed the unofficial build[0] a few hours ago, and when I started it and saw a bunch of Electron processes immediately trigger my spawn swarm detector, I just closed it. Don&#x27;t think I&#x27;ll ever touch it again. [0] https://github.com/aa…</li><li><span class="ev-user">@dahkenangnon (0):</span> We are all waiting for it.</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-hn">HN H7</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>160 分 · 66 评</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://news.ycombinator.com/item?id=48430923" target="_blank" rel="noopener">HN讨论AI时代的tokenomics概念，探讨如何衡量和优化LLM的token消耗效率，以及token成本对产品定价和工程决策的实际影响。</a></h3>
+          <p class="art-summary">Tokenomics: Quantifying Where Tokens Are Used in Agentic Software Engineering</p>
+          <p class="art-focus"><b>受众观点：</b>①@senectus1 分享亲历案例：一次简单查询烧掉250k token引发客户质疑，关注AI产品定价与成本转嫁；②@drivebyhooting 预测工程师未来考核维度转向token效率优化，关注AI时代工程师角色演变；③@sakuraiben 观察AI agent偏好写大量单元测试而非动态测试的行为模式。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@sakuraiben (0):</span> One thing I&#x27;ve noticed using agents for coding is that they really like to write thousands of unit tests but not dynamically test.</li><li><span class="ev-user">@drivebyhooting (0):</span> In the past Google et al would hire engineers based on how well they could optimize the infrastructure. Maybe soon companies will look at how engineers can optimize the token efficiency of AI.</li><li><span class="ev-user">@satvikpendem (0):</span> Tokenomics is already a word used to describe cryptocurrency economics, not sure why they&#x27;d try to redefine it for AI even if a different sort of token is used.</li><li><span class="ev-user">@SubiculumCode (0):</span> Reminded me of this paper from last year trying to optimize efficient token usage providing budget guidance information. [1] [1] https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Stee...</li><li><span class="ev-user">@senectus1 (0):</span> amusing side note: Was in a meeting reviewing a potential new product, it was going well until they showed us that they had added AI to it (of course they have). It was pretty obviously just shoehorned in, and one part of that obviousness was that they had a column that showed h…</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-hn">HN H6</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>166 分 · 35 评</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://news.ycombinator.com/item?id=48433756" target="_blank" rel="noopener">独立开发者用Go CLI构建的工具Lathe，调用LLM为任意技术主题生成手动编码式教程，强调让用户自己动手学习而非让AI替代思考。</a></h3>
+          <p class="art-summary">Hey HN! Lathe is an experiment in using LLMs to teach me something new, instead of doing the work for me. It generates a hands-on, source-backed tutorial for any technical topic you want to learn. Th…</p>
+          <p class="art-focus"><b>受众观点：</b>①@tatjam 关注如何在vibecoding盛行时保持真正的学习，认为这是AI时代理智使用LLM的方式；②@ramon156 质疑与直接提示ChatGPT的差异，关注工具差异化价值；③@james_marks/@kaeluka 对&quot;有了LLM还能自学新技术&quot;的场景表达强烈共鸣。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@james_marks (0):</span> Love this idea, can’t wait to try it. Thank you for sharing!</li><li><span class="ev-user">@tatjam (0):</span> This is a very cool idea, feels like a sane way to use LLMs in this crazy time! Could be a very good way to break the ice when starting a new project and everything is friction.</li><li><span class="ev-user">@esafak (0):</span> I just use https://blog.google/products-and-platforms/products/educatio... and similar features of other AIs.</li><li><span class="ev-user">@ramon156 (0):</span> What I&#x27;m more looking at is your own experience with a vibed tool. I cannot really tell from this introduction whether you actually use and like it (you mentioned you use it and sometimes push back, which is a learning strategy of its own?) Also, I wouldn&#x27;t say &quot;have another mod…</li><li><span class="ev-user">@kaeluka (0):</span> great, i&#x27;ll try this. something like this has on my list and i&#x27;m super curious :)</li></ul>
+          </details>
+        </div></div>
+      <div class="tab-view" data-view-type="table" style="display:none"><div class="overflow-x-auto">
+<table class="data-table">
+<thead><tr>
+  <th class="w-1/3">标题</th>
+  <th class="w-1/3">概述</th>
+  <th class="w-1/3">受众观点</th>
+</tr></thead>
+<tbody class="font-serif">
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/GergelyOrosz/status/2063191771232747625" target="_blank" rel="noopener">Scale AI 和 Meta 都要求软件工程师做人工数据标注，Gergely 揭示两家公司管理层的截然不同反应，引发行业对标注工作价值的争论。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>5.4k 赞 · 200 评 · 826.4k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter L1</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Scale AI 和 Meta 都要求软件工程师做人工数据标注，Gergely 揭示两家公司管理层的截然不同反应，引发行业对标注工作价值的争论。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：独立开发者做 AI 产品时自己手动标注训练数据是常态，这不是低身段而是对数据质量最直接的把控，可从 OctoCrawl 数据提取场景切入：知道数据长什么样才能设计出真正有用的 API。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① 工程师身份认同问题（@vikhyatk 认为标注被低估） ② 全职 vs 少量标注的时间比例之争（@__apf__） ③ 信源真实性质疑（@jdroege 以 Scale 前员工身份否认）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/DataChaz/status/2063342589332361634" target="_blank" rel="noopener">Anthropic 与网络安全专家合作的场景截图引发广泛传播，评论区集中讨论其「信任 AI agent」与「宣扬 AI 安全」之间的矛盾立场。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>4.9k 赞 · 34 评 · 1917k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter L2</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Anthropic 与网络安全专家合作的场景截图引发广泛传播，评论区集中讨论其「信任 AI agent」与「宣扬 AI 安全」之间的矛盾立场。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 AI agent 安全设计角度切入：Anthropic 的矛盾恰好说明 agent 信任边界是真实工程问题，可结合 OctoCrawl 中 agent 调用外部 API 时的权限设计谈实践经验。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① @AI_WarriorNQ 点出 Anthropic「不信任 agent」与「要求用户信任自己」的双重标准 ② @angipicklz 用讽刺比喻表达对 Anthropic 安全叙事的不信任 ③ @TheAIShrink 认为所谓安全不过是法律责任管理</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/steipete/status/2063697162748260627" target="_blank" rel="noopener">steipete 提出 AI 编程的范式转变：开发者应从手动提示 agent 升级为设计驱动 agent 运行的循环系统。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>3k 赞 · 280 评 · 189.8k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter L3</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>steipete 提出 AI 编程的范式转变：开发者应从手动提示 agent 升级为设计驱动 agent 运行的循环系统。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从实际构建 AI agent 产品经验出发，loop 设计的核心是 error handling、状态管理和 token 预算控制，结合 OctoCrawl 爬虫 agent 调度设计讲具体工程实践而非口号。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① @gauthampai 调侃「Loop Engineering」正在成为新 buzzword（概念快速扩散信号） ② @weswinder 提出 token 限制下仍需人在循环中的实际约束 ③ @MatthewBerman 和 @PhiloGroves 渴望落地工作流细节而非概念</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/NousResearch/status/2063379687070466559" target="_blank" rel="noopener">NousResearch 发布 Hermes Agent 面向艺术创作者的定位，配合 Runway MCP 使用，引发大量用户晒实际产出作品</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.4k 赞 · 100 评 · 36.5k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter ML1</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>NousResearch 发布 Hermes Agent 面向艺术创作者的定位，配合 Runway MCP 使用，引发大量用户晒实际产出作品</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 agent 设计者视角分析 Hermes 与 MCP 组合在创意工作流的应用，以及 AI agent 垂直专业化这一产品定位策略</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①用户已实际用 Hermes Agent 加 Runway MCP 完成创作并展示成果（@miku_diffract） ②Hermes 已成为部分用户全职工具（@SALTY_ALTY555） ③AI 艺术稀缺性哲学争议（@MoonEmpirE0）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/natolambert/status/2063444305583431901" target="_blank" rel="noopener">natolambert 以模型生成奇怪内容为例主张 AI 安全不可控，但评论区主流反驳认为这只是 prompt 工程问题而非真正的对齐风险</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>554 赞 · 61 评 · 321.7k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter ML2</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>natolambert 以模型生成奇怪内容为例主张 AI 安全不可控，但评论区主流反驳认为这只是 prompt 工程问题而非真正的对齐风险</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从技术角度区分 prompt 导致的预期内输出与真正的 AI 对齐失控，帮助厘清当前 AI safety 讨论中的常见混淆</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①prompt 本身要求极端内容，模型照做不是安全漏洞（@0xfdf 给出对比实验，@OneGodel 认为是 engagement bait） ②评论区大量用户复现验证是 prompt 驱动（@0xroshii） ③成年人内容审查必要性的价值观分歧（@KeridwenCodet）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/mattpocockuk/status/2063681047770919248" target="_blank" rel="noopener">mattpocockuk 展示自己构建的 /teach 技能工具，通过 AI agent skill 实现跨领域学习辅导，已成功用它学会魔方等技能。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>485 赞 · 28 评 · 20.4k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter L7</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>mattpocockuk 展示自己构建的 /teach 技能工具，通过 AI agent skill 实现跨领域学习辅导，已成功用它学会魔方等技能。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 AI skill 设计者角度切入——/teach 这类通用技能的设计挑战在于 context 管理和学习进度追踪，而不只是提示词，可结合构建 agent skill 的实践谈设计权衡。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① @ericclemmons 关注实际使用场景扩展（路途学习） ② @stevoperisic 询问能否用于更复杂技能（装修修车本地 AI），反映受众对能力边界的好奇 ③ @JanitorDev 肯定通用化 skill 的设计理念认为方向有价值</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/simonw/status/2063116647448383966" target="_blank" rel="noopener">simonw 分享在 Python 应用内通过 WebAssembly 运行 MicroPython 作为代码沙箱的最新实验，可用 uvx 命令直接调用</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>405 赞 · 37 评 · 31.9k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter ML3</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>simonw 分享在 Python 应用内通过 WebAssembly 运行 MicroPython 作为代码沙箱的最新实验，可用 uvx 命令直接调用</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 agent 工具链开发者视角对比 Wasm 沙箱、容器、Lua 嵌入等代码安全执行方案的取舍，结合 agent 代码执行场景的实际需求</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@simonw 给出具体可运行命令降低上手门槛 ②@TinaJucyBlue 质疑相比容器方案的额外价值 ③@newz2000 回顾嵌入式 Lua 历史方案认为更简单</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/thdxr/status/2063676889462366214" target="_blank" rel="noopener">thdxr 观察到 AI 正在拯救那些技术原语优秀但开发者体验极差的工具和库，让以前「太难用」的东西重新变得可用。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>360 赞 · 34 评 · 23.6k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter L8</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>thdxr 观察到 AI 正在拯救那些技术原语优秀但开发者体验极差的工具和库，让以前「太难用」的东西重新变得可用。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 API 产品设计角度提出反面观点：AI 降低了 DX 门槛，意味着以后拼的是 primitive 质量和 API 设计正确性；OctoCrawl 这类 API 产品需在 primitive 层做扎实，AI 会放大底层的好与坏。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① @noctus91 提出「AX（Agent Experience）」概念，agent 能否理解你的文档已成新竞争维度 ② @buildwithhassan 用 ffmpeg 举例说明 AI 让难用工具变可用的实际场景 ③ @championswimmer 提出反向观点：DX 好但 primitive 烂的工具被写进模型权重反而占便宜</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/jbhuang0604/status/2063296968710087135" target="_blank" rel="noopener">AI 研究者吐槽顶级学术会议 90% 以上的 oral session 演讲者照稿宣读、PPT 设计差，引发研究圈广泛共鸣</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>333 赞 · 26 评 · 122.6k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter ML4</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>AI 研究者吐槽顶级学术会议 90% 以上的 oral session 演讲者照稿宣读、PPT 设计差，引发研究圈广泛共鸣</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者角度分享清晰表达技术思想的重要性——表达能力是被低估的竞争壁垒，且 LLM 生成演讲稿正在加剧这一问题</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①好演讲需要专业培训（@yunta_tsai 提到 NVIDIA 有 SIGGRAPH 前辅导） ②很多演讲者代替原作者上台动机和准备不足（@MultiMichele） ③越来越多演讲稿可能是 LLM 直接生成（@CSProfKGD）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/willccbb/status/2063154395307815277" target="_blank" rel="noopener">AI 研究者 @willccbb 用 Claude 大规模清理代码库，评论暗示删除了大量单元测试，引发关于&quot;删代码即无 bug&quot;的调侃。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>274 赞 · 15 评 · 46.6k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter ML5</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>AI 研究者 @willccbb 用 Claude 大规模清理代码库，评论暗示删除了大量单元测试，引发关于&quot;删代码即无 bug&quot;的调侃。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：独立开发者视角：AI 工具作为技术债大扫除加速器，分享用 Claude 辅助重构的真实体验与工程权衡。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@vaizaragorn 调侃删代码无 bug，引发测试覆盖率讨论；②@alth0u 暗指 Claude 参与清理，受众好奇 AI 辅助重构的边界；③@deliprao 用 tokenmaxxing 调侃 LLM 上下文限制与大型代码库的冲突。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/marclou/status/2063405312531746915" target="_blank" rel="noopener">marclou 主持的 shipordie 独立开发者社群举办了一次大规模线上群体视频会议活动</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>265 赞 · 62 评 · 22.4k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter L9</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>marclou 主持的 shipordie 独立开发者社群举办了一次大规模线上群体视频会议活动</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：在评论区表达对 ship or die 社群文化的认同，提及自己作为冷启动期独立开发者的感受——这类社群对早期创作者的正向反馈循环有实质价值，比算法更能驱动坚持</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①线上会议规模体验让参与者困惑如何看到所有人（@jackfriks @iflessthan3）②@katalyst_katt 建议引入小组互相反馈制以提升互动质量③@MartinTale 对下次活动充满期待</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/levelsio/status/2063582056542556617" target="_blank" rel="noopener">levelsio 推荐一篇关于品牌收割（brand harvesting）作为 enshittification 手段的深度文章</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>263 赞 · 23 评 · 37.2k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter L10</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>levelsio 推荐一篇关于品牌收割（brand harvesting）作为 enshittification 手段的深度文章</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者视角切入——为什么不卖给大公司是主动选择而不是失败；品牌收割对 SaaS 产品的警示；indie dev 长期主义 vs. 被收购后的快速退化</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@dvassallo 指出消费者主动选择便宜货是市场压力根本来源②@ahtashammuzamal 指出 SaaS 品牌收割发生更快：vibe-coded UI launch 后后端逐渐腐化③@bitcoin_eagle 将此归因于货币体系与资本扩张</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/arena/status/2063287698102882586" target="_blank" rel="noopener">Chatbot Arena 推出 Agent Mode，用真实任务测试前沿 AI agent 并为 Agent Arena 排行榜积累评测数据。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>105 赞 · 10 评 · 12.4k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter ML6</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Chatbot Arena 推出 Agent Mode，用真实任务测试前沿 AI agent 并为 Agent Arena 排行榜积累评测数据。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：独立开发者选 agent 框架/模型时的最大痛点是缺乏可信基准——Agent Arena 若数据够真实，可能成为选型参考，但平台稳定性和归一化方法存疑。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@juusepson64 吐槽平台 buggy、稳定性差，反映开发者对 agent 平台可靠性的高敏感度；②@EVERYTHING44489 关心多 agent 任务跨公司模型分发，指向 orchestration 架构需求；③@bygregorr 质疑跨任务类型 leaderboard 归一化方法，金融调试与图片生成信号差异显著。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/natolambert/status/2063674737881227433" target="_blank" rel="noopener">ML 研究者 @natolambert 用&quot;Slowly, then suddenly&quot;暗示某 AI 趋势正从缓慢积累进入爆发拐点，评论指向 NVIDIA 全栈垄断或 LLM 大规模普及。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>98 赞 · 6 评 · 10.4k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter ML7</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>ML 研究者 @natolambert 用&quot;Slowly, then suddenly&quot;暗示某 AI 趋势正从缓慢积累进入爆发拐点，评论指向 NVIDIA 全栈垄断或 LLM 大规模普及。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：独立开发者视角：用具体 AI 产品构建经历回应这个拐点——某个 API 或模型从小众工具变成基础设施的过程，以及如何在&quot;缓慢阶段&quot;提前押注。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@MeisterCoins 认为这指向 NVIDIA 掌控整个 AI 技术栈；②@Pacoxbt 从创业者角度解读，认为早发现缓慢阶段是竞争优势；③@Newtlx 将规律映射到 LLM 普及曲线。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://news.ycombinator.com/item?id=48434436" target="_blank" rel="noopener">HN 热帖讨论 Claude Desktop 是否会推出 Linux 官方版本，评论区披露 Anthropic 内部已在 macOS 上运行 Ubuntu 22.04 且技术路径存在，目前缺少的只是公开构建版本发布。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>360 分 · 197 评</span>
+              <span>🔥</span>
+              <span class="text-[10px]">HN H1</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>HN 热帖讨论 Claude Desktop 是否会推出 Linux 官方版本，评论区披露 Anthropic 内部已在 macOS 上运行 Ubuntu 22.04 且技术路径存在，目前缺少的只是公开构建版本发布。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从使用 Claude Desktop 和 Claude Code 深度工作流的独立开发者角度切入——Linux 版本缺失是真实痛点：有技术背景的开发者要么用 CLI 凑合，要么装非官方包（@skeledrew 装了 Electron 版本看到进程爆发立刻关掉），这正是工具链完整性 vs 用户信任的典型张力，可结合自身使用体验展开观点。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@predkambrij 披露技术事实：Cowork 内部已在 macOS 运行 Ubuntu 22.04，Linux 执行路径存在只差公开构建；②@shanewei 提出实用问题：CLI 无法覆盖 Desktop App 的哪些功能，说明受众在评估切换成本；③@skeledrew 分享亲身经历：安装非官方 Debian 版本后看到大量 Electron 进程触发安全警报立刻放弃，引发对非官方包可信度的讨论。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://news.ycombinator.com/item?id=48430923" target="_blank" rel="noopener">HN讨论AI时代的tokenomics概念，探讨如何衡量和优化LLM的token消耗效率，以及token成本对产品定价和工程决策的实际影响。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>160 分 · 66 评</span>
+              <span>🔥</span>
+              <span class="text-[10px]">HN H7</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>HN讨论AI时代的tokenomics概念，探讨如何衡量和优化LLM的token消耗效率，以及token成本对产品定价和工程决策的实际影响。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者角度聊AI产品的隐性token成本——在构建AI驱动产品时如何做token预算、设计token效率，以及&quot;all you can eat&quot;定价背后的商业风险，结合真实产品开发经验切入。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@senectus1 分享亲历案例：一次简单查询烧掉250k token引发客户质疑，关注AI产品定价与成本转嫁；②@drivebyhooting 预测工程师未来考核维度转向token效率优化，关注AI时代工程师角色演变；③@sakuraiben 观察AI agent偏好写大量单元测试而非动态测试的行为模式。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://news.ycombinator.com/item?id=48433756" target="_blank" rel="noopener">独立开发者用Go CLI构建的工具Lathe，调用LLM为任意技术主题生成手动编码式教程，强调让用户自己动手学习而非让AI替代思考。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>166 分 · 35 评</span>
+              <span>🔥</span>
+              <span class="text-[10px]">HN H6</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>独立开发者用Go CLI构建的工具Lathe，调用LLM为任意技术主题生成手动编码式教程，强调让用户自己动手学习而非让AI替代思考。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者视角讨论&quot;AI辅助学习 vs AI替代学习&quot;的边界——Lathe的理念（LLM填补人类教程空白而非取代人类知识）呼应自己在构建AI工具时的核心问题：agent应该增强人的能力还是替代人的判断？结合使用Claude Code的真实体验切入。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@tatjam 关注如何在vibecoding盛行时保持真正的学习，认为这是AI时代理智使用LLM的方式；②@ramon156 质疑与直接提示ChatGPT的差异，关注工具差异化价值；③@james_marks/@kaeluka 对&quot;有了LLM还能自学新技术&quot;的场景表达强烈共鸣。</p>
+          </td>
+        </tr></tbody>
+</table></div></div>
+    </div>
+    <div class="tab-panel" data-tab-panel="tab-2">
+      <div class="tab-view" data-view-type="list" style="display:block">
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P2 · @om_patel5</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>2.8k 赞 · 80 评 · 266.9k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/om_patel5/status/2063467264817479775" target="_blank" rel="noopener">有人用 Claude Code vibe coding 构建了现实版宝可梦图鉴应用 gotcha，用手机摄像头识别真实动物并生成个人图鉴</a></h3>
+          <p class="art-summary">SOMEONE VIBE CODED A POKEDEX FOR REAL LIFE WITH CLAUDE CODE point your phone at any animal, it identifies it on the spot and adds it to your personal index. you walk around irl catching real creature…</p>
+          <p class="art-focus"><b>受众观点：</b>①@jurree 是原作者，出来要求 credit，揭示病毒传播中作者信息丢失的普遍问题②@dancolta 做过类似项目，指出运动帧缓存是识别关键，地理稀有度角度是核心亮点③@NonFunHuman 质疑产品使用场景和目标用户</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@jurree (38):</span> @om_patel5 Hi! This is my video, I built this. Can you credit me please? https://t.co/5yRVhDJDIq</li><li><span class="ev-user">@jurree (33):</span> @om_patel5 make sure to sign up for the waitlist here! :) https://t.co/Fn7caOatdS</li><li><span class="ev-user">@NonFunHuman (12):</span> @om_patel5 You guys really need to get a hobby, who the fuck is gonna roam the world trying to complete that?</li><li><span class="ev-user">@dancolta (11):</span> @om_patel5 built something similar last month that kept breaking because identifying animals in motion is way harder than static images, ended up having to cache the last 3 frames before sending to claude, the geo rarity angle is the clever bit tho, that&#x27;s the part i hadn&#x27;t thou…</li><li><span class="ev-user">@sumwearoutthere (8):</span> @om_patel5 Where what’s the name any acutal info would be nice</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P3 · @sharbel</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.5k 赞 · 60 评 · 94.8k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/sharbel/status/2063369348828610886" target="_blank" rel="noopener">开源项目 last30days 在 GitHub 获得 28700+ star，能并行搜索 Reddit/X/YouTube/HN/TikTok/Polymarket 等多平台并按真实互动数据评分后生成一份简报</a></h3>
+          <p class="art-summary">Someone built an AI agent that searches Reddit, X, YouTube, HN, TikTok, Polymarket, and the web in parallel. Scores everything by real upvotes, real likes, and real money. Synthesizes it into one bri…</p>
+          <p class="art-focus"><b>受众观点：</b>①@oMaMoriTTV 指出该工具并非真正免费，需自备 OpenAI/Anthropic/Google API key②@gigglefartninja 认为此工具证明平台算法只是信息中间商③@mvanhorn 即项目作者本人出现笑着认领</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@mvanhorn (48):</span> @sharbel Wait I am that someone. Cool! 😂 thanks for posting!</li><li><span class="ev-user">@gigglefartninja (6):</span> @sharbel the fact that this exists is basically an admission that every platform&#x27;s algorithm is just a middleman between you and the information you actually want</li><li><span class="ev-user">@oMaMoriTTV (6):</span> @sharbel The text claims the tool is &quot;$0. Unlimited queries... Free forever.&quot; While the software is free and open source, the AI models and APIs are not. Because it says &quot;Your API keys,&quot; you will have to pay OpenAI, Anthropic, or Google... So this someone is not strictly &quot;zero d…</li><li><span class="ev-user">@webthreeandmee (3):</span> @sharbel “Someone” built? @mvanhorn has a name, you know!</li><li><span class="ev-user">@ramagetime (1):</span> @sharbel @DmitriyAnderson Got Hermes installing now. 🔥🔥This sounds</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P5 · @SocketSecurity</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>196 赞 · 5 评 · 17.8k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/SocketSecurity/status/2063502849678479398" target="_blank" rel="noopener">Socket 安全团队发现 19 个 PyPI 恶意包共 37 个 artifact，利用 Python .pth 文件启动机制配合 Bun 运行时窃取开发者及 CI/CD 凭证</a></h3>
+          <p class="art-summary">🚨 Mini Shai-Hulud/Miasma has now spread to PyPI. Socket found 37 malicious artifacts across 19 PyPI packages. The packages abuse #Python .pth startup behavior to launch a Bun-powered credential steal…</p>
+          <p class="art-focus"><b>受众观点：</b>①@orielhaim 建议标题加 again，暗示此类事件已成常态②@bygregorr 质疑 Bun 是否真的能规避 .pth 端静态分析③@Yuri_Bezmenov42 对 mini worm 和普通 worm 的分类差异感到好奇</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@IdoNaor1 (7):</span> @SocketSecurity Someone usually puts this, right? https://t.co/mJLfU8to9s</li><li><span class="ev-user">@orielhaim (2):</span> @SocketSecurity Please add &quot;again&quot; next time</li><li><span class="ev-user">@Yuri_Bezmenov42 (1):</span> @SocketSecurity https://t.co/8B4yRneFie</li><li><span class="ev-user">@Yuri_Bezmenov42 (0):</span> @SocketSecurity Also I am still wondering: What is the difference between a mini and a normal worm ? Inquiring minds want to know !</li><li><span class="ev-user">@bygregorr (0):</span> @SocketSecurity not sure if bun is the clever bit or just noise. does running a non-python executor actually help them dodge static analysis on the .pth side?</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P6 · @rubenhassid</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>163 赞 · 17 评 · 13.6k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/rubenhassid/status/2063576718216954162" target="_blank" rel="noopener">介绍 Claude Connectors 功能的五步操作教程，支持将 Gmail、Slack、Notion 等应用接入 Claude 聊天界面实现上下文打通</a></h3>
+          <p class="art-summary">How to connect your apps with Claude in 5 steps: (takes 60 seconds to set up, saves you 60 hours) 1. Go to Claude. 2. Click the &quot;+&quot; inside the chatbox (not Settings). 3. Find &quot;Connectors&quot; &amp;amp; click…</p>
+          <p class="art-focus"><b>受众观点：</b>①@rileywestreel 指出每个激活 connector 在输入前就消耗 token，选择性开启是被低估的成本杠杆②@RomanGweb3 指出 60 秒配置只是开始，真正信任 AI 执行才是瓶颈③@Nicoqp 认为 AI 核心价值在于 context 的可获取性而非答案生成</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@rileywestreel (1):</span> @rubenhassid Smart call on the token warning. Every active connector inflates the context window before you type a word — selective enabling is an underrated cost lever.</li><li><span class="ev-user">@RomanGweb3 (0):</span> @rubenhassid the 60 second setup is the easy part. the 60 hours only show up once you trust it enough to stop double checking everything it does, and that takes way longer than 60 seconds</li><li><span class="ev-user">@Nicoqp (0):</span> @rubenhassid the value of AI was never in generating answers the value is in having access to the context behind the answers which most people lack</li><li><span class="ev-user">@alphabatcher (0):</span> @rubenhassid just 5 steps, so simple bro bookmarked</li><li><span class="ev-user">@nrqa__ (0):</span> @rubenhassid this makes the whole connectors feature feel way less overwhelming</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P7 · @ai_for_success</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>149 赞 · 17 评 · 12.8k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/ai_for_success/status/2063503225605763198" target="_blank" rel="noopener">Seedance 2.0 被认为是目前最强的 AI 视频生成模型，帖子引发用户询问平台入口和安全风险</a></h3>
+          <p class="art-summary">Seedance 2.0 is the best AI video model right now. https://t.co/nRdnhGrUsG</p>
+          <p class="art-focus"><b>受众观点：</b>①如何访问/用哪个平台（@rkjat65 直接追问） ②视频仿真带来的生物识别安全风险（@venky4a 提到绕过面部 2FA）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@venky4a (2):</span> @ai_for_success That&#x27;s my biggest fear ,it can bypass any biometric facial 2FA</li><li><span class="ev-user">@rkjat65 (2):</span> @ai_for_success How to access it? I mean best platform?</li><li><span class="ev-user">@CodeByPoonam (2):</span> @ai_for_success Plus one on that</li><li><span class="ev-user">@arjunaaqa (1):</span> @ai_for_success now your wife is gonna try those moves on ya, beware</li><li><span class="ev-user">@ai_with_shah (1):</span> @ai_for_success Indeed it&#x27;s just amazing</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P8 · @natiakourdadze</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>138 赞 · 5 评 · 10.6k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/natiakourdadze/status/2063333282289266946" target="_blank" rel="noopener">利用 TikTok Creator Search Insights 结合 Astro 低竞争关键词发现 iOS App 创意的五步方法论</a></h3>
+          <p class="art-summary">Easiest way to find iOS app ideas to build: 1. Go to TikTok and type “Creator Search Insights” 2. Filter videos by trending topics 4. Find hooks and high-performing content ideas 5. Re-check low-comp…</p>
+          <p class="art-focus"><b>受众观点：</b>①免费分享秘方背后的真实动机存疑（@brtwister 质疑） ②让 TikTok 趋势主导产品 roadmap 被认为是大胆之举（@nickventuri）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@brtwister (3):</span> @natiakourdadze I wonder why everyone on X is so willing to give away their best methods, the same ones that take years to learn, completely for free and apparently out of pure altruism, with no ulterior motives. 💡</li><li><span class="ev-user">@natiakourdadze (2):</span> To learn more business growth strategies and actionable tips, subscribe to my newsletter: https://t.co/0UMyqbhl58</li><li><span class="ev-user">@J_Sudheendra_ (1):</span> @natiakourdadze Absolutely gold insight! Thank you for this!</li><li><span class="ev-user">@nickventuri (1):</span> @natiakourdadze letting tiktok trends decide your entire product roadmap is a bold move 😅</li><li><span class="ev-user">@dozibe (1):</span> @natiakourdadze thanks for the sauce</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter P10 · @ErnestoSOFTWARE</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>83 赞 · 3 评 · 9.6k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/ErnestoSOFTWARE/status/2063691216311534066" target="_blank" rel="noopener">博主观察 AI 建筑设计视频在 TikTok 累积 1.72 亿播放，认为加 CTA 链接到室内设计 App 是未被挖掘的变现机会</a></h3>
+          <p class="art-summary">172M views on AI construction reels😭 Int design apps make $300k/mo btw.. I am a victim of this brainrot myself these videos are unskipable, If they added a quick CTA to a vibe coded interior design a…</p>
+          <p class="art-focus"><b>受众观点：</b>①172M 播放不等于有效流量，关键是用户是否有购买意图（@Joelpillar1 质疑） ②AI UGC 视频全自动化生产仍需大量人工质量控制（@Arturkre 基于自身实践反驳）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Joelpillar1 (0):</span> @ErnestoSOFTWARE 172M views is not the win. the win is whether any of that traffic had intent. most viral content is just expensive entertainment.</li><li><span class="ev-user">@Arturkre (0):</span> @ErnestoSOFTWARE &quot;and this an easy format to automate&quot;... yea its really not. I am also creating AI UGC content daily and while you can automate a lot of things, a full video still require a lot of human interaction and quality control / re-rendering of material.</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter A4 · @robert_shaw</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>80 赞 · 156 评 · 4.7k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/robert_shaw/status/2061372798287876274" target="_blank" rel="noopener">robert_shaw 发起每周 SaaS/Startup 创始人产品展示征集帖，超过 100 位 #buildinpublic 创始人在评论区分享各自正在构建的产品。</a></h3>
+          <p class="art-summary">SaaS/Startup founders What are you building currently? Show your amazing product below, join 100+ founders here every week. #indiehackers #buildinpublic https://t.co/Pnnh8zp64y</p>
+          <p class="art-focus"><b>受众观点：</b>① SaaS 创始人寻求早期曝光和同行反馈（@SaidAitmbarek 展示面向创始人的营销分发平台）② 浏览器 AI Agent 类产品受到关注（@robert_shaw 展示浏览器 agent）③ 创意/设计工具类产品活跃出现（@simonasika 展示截图灵感收集和 AI 自动标签工具）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@robert_shaw (6):</span> I&#x27;ll go first. I am building and growing my side project in public and sharing the journey on @x. Currently, I am growing An AI Agent for your browser. Browse less. Get more done. https://t.co/TfyPWjTqKB</li><li><span class="ev-user">@SaidAitmbarek (3):</span> @robert_shaw I’m building all-in-one marketing pack for founders. Launch, reach 30k+ makers/mo, get real users - https://t.co/uvOQmnaux0 Auto-distribution, marketplace spots for your app. 🫶</li><li><span class="ev-user">@base0tech (3):</span> @robert_shaw we are here to make your contracts give a smoother ride to your clients. visit us https://t.co/DjYJCqfRKk</li><li><span class="ev-user">@GandotraAB03 (3):</span> @robert_shaw Get paid through your waitlists without even writing a single line of code. You can easily make money before even launching your product Here’s the link : https://t.co/WFqiFfGJLq Would love your thoughts!!</li><li><span class="ev-user">@simonasika (2):</span> Love seeing all the ideas shared here, so here&#x27;s ours too. The idea is simple: help creators capture website inspiration instantly, build a personal screenshot library, and let AI handle the tagging, organization, and search. This video is an early concept. Next up: a browser ex…</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter A5 · @robert_shaw</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>31 赞 · 79 评 · 2.2k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/robert_shaw/status/2058760065923072224" target="_blank" rel="noopener">robert_shaw 同类型每周创始人产品展示帖较早一期（328h），评论区有 AI 电商工具、硬件创业、营销平台等独立产品展示，互动仍在持续。</a></h3>
+          <p class="art-summary">SaaS/Startup founders What are you building currently? Show your amazing product below, join 100+ founders here every week. #indiehackers #buildinpublic https://t.co/ckpmp4gXlP</p>
+          <p class="art-focus"><b>受众观点：</b>① AI 辅助快速构建和重新设计产品（@ECD_HOUSE 展示用 AI 1天完成 EcomForge AI 全面改版）② 硬件与网站双线并行的独立开发经验（@PavlovBD 分享欧洲硬件创业加 Framer 网站服务）③ 营销分发和用户获取工具需求旺盛（@SaidAitmbarek 再次出现推广营销包产品）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@SaidAitmbarek (3):</span> @robert_shaw Hey Rob., I’m building an all-in-one marketing pack for founders. Launch, reach 30k+ makers/month, get users &amp;amp; customers. https://t.co/uvOQmnaux0 Includes auto-distribution + marketplace spots for your product.</li><li><span class="ev-user">@robert_shaw (2):</span> I&#x27;ll go first. I am building and growing my side project in public and sharing the journey on @x. Currently, I am growing An AI Agent for your browser. Browse less. Get more done. https://t.co/TfyPWjTqKB</li><li><span class="ev-user">@PavlovBD (2):</span> @robert_shaw Hey! I&#x27;m currently working on hardware startup for Europe @pemeuglobal It&#x27;s a very interesting experience. Also I love building Framer sites for business 🙌</li><li><span class="ev-user">@ECD_HOUSE (2):</span> @robert_shaw Just shipped a major upgrade to EcomForge AI 🔥 New landing page. New UI. Still 100% free. Before: basic tool After: looks like a $50/month SaaS Built the whole redesign in 1 day with $0 using AI 📷 Try it → https://t.co/Xf5g1W4rzg #buildinpublic #indiemaker #AI https…</li><li><span class="ev-user">@larsbuilds (1):</span> @robert_shaw launching this one today! https://t.co/Hsg8d3BRes</li></ul>
+          </details>
+        </div></div>
+      <div class="tab-view" data-view-type="table" style="display:none"><div class="overflow-x-auto">
+<table class="data-table">
+<thead><tr>
+  <th class="w-1/3">标题</th>
+  <th class="w-1/3">概述</th>
+  <th class="w-1/3">受众观点</th>
+</tr></thead>
+<tbody class="font-serif">
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/om_patel5/status/2063467264817479775" target="_blank" rel="noopener">有人用 Claude Code vibe coding 构建了现实版宝可梦图鉴应用 gotcha，用手机摄像头识别真实动物并生成个人图鉴</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>2.8k 赞 · 80 评 · 266.9k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter P2</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>有人用 Claude Code vibe coding 构建了现实版宝可梦图鉴应用 gotcha，用手机摄像头识别真实动物并生成个人图鉴</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从开发者视角分析 Claude Code 快速原型能力：动物视觉识别的技术挑战（运动帧缓存）、地理稀有度系统的产品创新点，以及这类现实游戏化 MVP 的设计逻辑</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@jurree 是原作者，出来要求 credit，揭示病毒传播中作者信息丢失的普遍问题②@dancolta 做过类似项目，指出运动帧缓存是识别关键，地理稀有度角度是核心亮点③@NonFunHuman 质疑产品使用场景和目标用户</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/sharbel/status/2063369348828610886" target="_blank" rel="noopener">开源项目 last30days 在 GitHub 获得 28700+ star，能并行搜索 Reddit/X/YouTube/HN/TikTok/Polymarket 等多平台并按真实互动数据评分后生成一份简报</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.5k 赞 · 60 评 · 94.8k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter P3</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>开源项目 last30days 在 GitHub 获得 28700+ star，能并行搜索 Reddit/X/YouTube/HN/TikTok/Polymarket 等多平台并按真实互动数据评分后生成一份简报</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从多源聚合 API 生态角度切入：此工具的爆火验证了开发者对跨平台数据聚合的强需求；免费开源但需自备 API key 的模式对独立开发者的实际成本影响；以及 28k star 冷启动路径的可复制性</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@oMaMoriTTV 指出该工具并非真正免费，需自备 OpenAI/Anthropic/Google API key②@gigglefartninja 认为此工具证明平台算法只是信息中间商③@mvanhorn 即项目作者本人出现笑着认领</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/SocketSecurity/status/2063502849678479398" target="_blank" rel="noopener">Socket 安全团队发现 19 个 PyPI 恶意包共 37 个 artifact，利用 Python .pth 文件启动机制配合 Bun 运行时窃取开发者及 CI/CD 凭证</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>196 赞 · 5 评 · 17.8k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter P5</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Socket 安全团队发现 19 个 PyPI 恶意包共 37 个 artifact，利用 Python .pth 文件启动机制配合 Bun 运行时窃取开发者及 CI/CD 凭证</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者安全防护角度切入：.pth 文件劫持是许多开发者不了解的攻击向量；Bun 作为执行载体的技术意图值得深挖；CI/CD secrets 泄露对 solo dev 比大公司更致命</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@orielhaim 建议标题加 again，暗示此类事件已成常态②@bygregorr 质疑 Bun 是否真的能规避 .pth 端静态分析③@Yuri_Bezmenov42 对 mini worm 和普通 worm 的分类差异感到好奇</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/rubenhassid/status/2063576718216954162" target="_blank" rel="noopener">介绍 Claude Connectors 功能的五步操作教程，支持将 Gmail、Slack、Notion 等应用接入 Claude 聊天界面实现上下文打通</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>163 赞 · 17 评 · 13.6k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter P6</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>介绍 Claude Connectors 功能的五步操作教程，支持将 Gmail、Slack、Notion 等应用接入 Claude 聊天界面实现上下文打通</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从开发者工具链和成本控制角度切入：每个激活的 Connector 增加 context window 消耗进而影响 API 成本；Claude Connectors 背后的 MCP 协议对独立开发者的实际意义；与手动构建集成的 trade-off</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@rileywestreel 指出每个激活 connector 在输入前就消耗 token，选择性开启是被低估的成本杠杆②@RomanGweb3 指出 60 秒配置只是开始，真正信任 AI 执行才是瓶颈③@Nicoqp 认为 AI 核心价值在于 context 的可获取性而非答案生成</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/ai_for_success/status/2063503225605763198" target="_blank" rel="noopener">Seedance 2.0 被认为是目前最强的 AI 视频生成模型，帖子引发用户询问平台入口和安全风险</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>149 赞 · 17 评 · 12.8k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter P7</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Seedance 2.0 被认为是目前最强的 AI 视频生成模型，帖子引发用户询问平台入口和安全风险</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 AI 视频工具用户视角评测 Seedance 2.0，结合独立开发者如何把 AI 视频生成能力嵌入自己的产品</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①如何访问/用哪个平台（@rkjat65 直接追问） ②视频仿真带来的生物识别安全风险（@venky4a 提到绕过面部 2FA）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/natiakourdadze/status/2063333282289266946" target="_blank" rel="noopener">利用 TikTok Creator Search Insights 结合 Astro 低竞争关键词发现 iOS App 创意的五步方法论</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>138 赞 · 5 评 · 10.6k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter P8</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>利用 TikTok Creator Search Insights 结合 Astro 低竞争关键词发现 iOS App 创意的五步方法论</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：面向美国市场的独立开发者如何用社交媒体趋势数据驱动产品选题决策，以及让 TikTok 趋势决定 roadmap 是否理性</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①免费分享秘方背后的真实动机存疑（@brtwister 质疑） ②让 TikTok 趋势主导产品 roadmap 被认为是大胆之举（@nickventuri）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/ErnestoSOFTWARE/status/2063691216311534066" target="_blank" rel="noopener">博主观察 AI 建筑设计视频在 TikTok 累积 1.72 亿播放，认为加 CTA 链接到室内设计 App 是未被挖掘的变现机会</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>83 赞 · 3 评 · 9.6k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter P10</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>博主观察 AI 建筑设计视频在 TikTok 累积 1.72 亿播放，认为加 CTA 链接到室内设计 App 是未被挖掘的变现机会</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者视角分析高播放量垂类内容与 vibe-coded 产品的冷启动结合逻辑——流量和付费意愿是两码事，如何低成本验证转化</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①172M 播放不等于有效流量，关键是用户是否有购买意图（@Joelpillar1 质疑） ②AI UGC 视频全自动化生产仍需大量人工质量控制（@Arturkre 基于自身实践反驳）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/robert_shaw/status/2061372798287876274" target="_blank" rel="noopener">robert_shaw 发起每周 SaaS/Startup 创始人产品展示征集帖，超过 100 位 #buildinpublic 创始人在评论区分享各自正在构建的产品。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>80 赞 · 156 评 · 4.7k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter A4</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>robert_shaw 发起每周 SaaS/Startup 创始人产品展示征集帖，超过 100 位 #buildinpublic 创始人在评论区分享各自正在构建的产品。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：在评论区以独立开发者身份展示 OctoCrawl，定位为为 indie 创始人提供统一数据获取 API 的基础设施工具，借助 build-in-public 社区流量自然曝光产品，对话正在构建 AI 产品的早期创始人群体。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① SaaS 创始人寻求早期曝光和同行反馈（@SaidAitmbarek 展示面向创始人的营销分发平台）② 浏览器 AI Agent 类产品受到关注（@robert_shaw 展示浏览器 agent）③ 创意/设计工具类产品活跃出现（@simonasika 展示截图灵感收集和 AI 自动标签工具）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/robert_shaw/status/2058760065923072224" target="_blank" rel="noopener">robert_shaw 同类型每周创始人产品展示帖较早一期（328h），评论区有 AI 电商工具、硬件创业、营销平台等独立产品展示，互动仍在持续。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>31 赞 · 79 评 · 2.2k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter A5</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>robert_shaw 同类型每周创始人产品展示帖较早一期（328h），评论区有 AI 电商工具、硬件创业、营销平台等独立产品展示，互动仍在持续。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：在评论区以「用 AI 工具 1 天完成原本需要一周的产品开发」为切入点（呼应评论区 @ECD_HOUSE 的 AI 重设计经历），自然带出 OctoCrawl 的数据能力，面向正在构建 AI 产品的创始人。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① AI 辅助快速构建和重新设计产品（@ECD_HOUSE 展示用 AI 1天完成 EcomForge AI 全面改版）② 硬件与网站双线并行的独立开发经验（@PavlovBD 分享欧洲硬件创业加 Framer 网站服务）③ 营销分发和用户获取工具需求旺盛（@SaidAitmbarek 再次出现推广营销包产品）</p>
+          </td>
+        </tr></tbody>
+</table></div></div>
+    </div>
+    <div class="tab-panel" data-tab-panel="tab-3">
+      <div class="tab-view" data-view-type="list" style="display:block">
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S2 · @AnthropicAI</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>28.1k 赞 · 1688 评 · 17818k 阅</span>
+              <span>🔥🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/AnthropicAI/status/2062568862479208923" target="_blank" rel="noopener">Anthropic 官方发布内部数据显示 Claude 正在加速 AI 开发进程并可能触发递归自我改进，工程师代码产出量五年间提升八倍，被认为是 AI 加速时代的重要信号。</a></h3>
+          <p class="art-summary">Our internal data shows Claude is accelerating AI development—a possible path to recursive self-improvement, or AI autonomously building a more capable successor. It’s happening faster than we though…</p>
+          <p class="art-focus"><b>受众观点：</b>① AI 角色颠倒的幽默焦虑共鸣（@MediaOffScript：本来该是我的助手，结果我成了它的助手）② 对递归自我改进真实进展的震惊和好奇（@AISafetyMemes 强烈情绪反应）③ 对 Anthropic 官方信息可信度的调侃（@TarikElyass 质疑这条推文是否由 Claude 生成）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@AnthropicAI (4891):</span> Today, Anthropic engineers on average ship 8x as much code per quarter as they did compared to 2021-2025. https://t.co/QCc9cqGgf4</li><li><span class="ev-user">@patricioirivera (2058):</span> @AnthropicAI https://t.co/08lOqLwWSu</li><li><span class="ev-user">@AISafetyMemes (611):</span> @AnthropicAI Holy shit just read this part LET&#x27;S FUCKING GOO https://t.co/eAAVVGE25z</li><li><span class="ev-user">@TarikElyass (492):</span> @AnthropicAI Certainly, Claude wrote this tweet https://t.co/dO7qSbdoBb</li><li><span class="ev-user">@MediaOffScript (242):</span> @AnthropicAI The AI was supposed to be my assistant. Somewhere along the way I became the assistant.</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S3 · @OpenAI</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>19.5k 赞 · 943 评 · 9368.9k 阅</span>
+              <span>🔥🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/OpenAI/status/2061845949170045346" target="_blank" rel="noopener">OpenAI 发布 Codex Sites 功能，允许用户用自然语言把工作内容和想法生成为可交互网站或 App 并通过 URL 分享，目前向 Business 和 Enterprise 用户优先开放。</a></h3>
+          <p class="art-summary">Building apps has never been easier. With Sites, Codex can turn your work, ideas, and plans into an interactive website or app your team can explore, use, and share with a URL. Rolling out to Busines…</p>
+          <p class="art-focus"><b>受众观点：</b>① 传统 CS 技能和工程师价值被取代的焦虑（@NovaXCode：计算机学位正在变成昂贵的博物馆文物）② 对 Lovable/Bolt 等现有竞品市场冲击的关注（@SahilPanhotra 暗示这些创业公司处境尴尬）③ demo 精彩但生产可靠性存疑（@rameswar08 指出从 impressive prototype 到 team can depend on 之间差距显著）</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@OpenAI (714):</span> https://t.co/eZ4SPUQu5x</li><li><span class="ev-user">@NovaXCode (642):</span> @OpenAI Realising my computer science degree is slowly turning into a very expensive museum artifact. https://t.co/fgkyqhzar7</li><li><span class="ev-user">@SahilPanhotra (255):</span> @OpenAI Lovable,bolt etc CEO right now https://t.co/Z09O14buQA</li><li><span class="ev-user">@rameswar08 (156):</span> @OpenAI i&#x27;m curious how far this actually goes turning ideas into a working prototype is one thing turning them into something reliable that a real team can depend on is another the gap between impressive demo and production tool is still wide</li><li><span class="ev-user">@anomsiiwa (131):</span> @OpenAI Me staring at my carefully crafted Tailwind components while someone else generates the exact same layout with a two sentence prompt. https://t.co/gSBnX73MfX</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S6 · @interaction</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>5.2k 赞 · 415 评 · 4352.3k 阅</span>
+              <span>🔥🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/interaction/status/2062575428213285352" target="_blank" rel="noopener">AI agent Poke 获得 Apple 官方批准，成为首个也是唯一一个可在 Apple Messages 平台上运行的 AI agent。</a></h3>
+          <p class="art-summary">Say hi to the new Poke! 🌴 Now officially approved by Apple to text on Apple Messages. As the first and only AI agent. Chat now: https://t.co/VIWYU64dUI https://t.co/AtZxupI2Ji</p>
+          <p class="art-focus"><b>受众观点：</b>①@marvinvonhagen 关注基础设施可靠性提升，认为速度和稳定性是 agent 产品核心竞争力 ②@rauchg 点出这可能是首个&quot;让普通人也能理解&quot;的 agent，聚焦大众可用性 ③@tenobrus 质疑实际落地效果，新渠道并未真正响应，产品与宣传有落差</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@marvinvonhagen (259):</span> @interaction Poke is also much, much, much faster and reliable thanks to the biggest infrastructure update ever! ⚡</li><li><span class="ev-user">@rauchg (254):</span> @interaction Maybe the first agent that makes sense to everyone</li><li><span class="ev-user">@btn0s (216):</span> @interaction left me on read https://t.co/5UMsFFKrty</li><li><span class="ev-user">@sean_vdr (91):</span> @interaction Interesting https://t.co/I04QvYdMvV</li><li><span class="ev-user">@tenobrus (76):</span> @interaction i&#x27;d be real excited about this but it is not in fact responding through the new channel https://t.co/Lv6HLVYCGY</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S7 · @0xwhrrari</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>4.6k 赞 · 80 评 · 1139.4k 阅</span>
+              <span>🔥🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/0xwhrrari/status/2063244577482440978" target="_blank" rel="noopener">围绕谷歌前 CEO 观点展开的推文，主张真正用 AI 赚钱必须系统学习 agents、Claude Code、MCP、memory 等核心技术栈，而非刷帖消费内容。</a></h3>
+          <p class="art-summary">Google&#x27;s former CEO just said what everyone in AI already knows Building wealth is getting easier if you actually learn the tools Not by scrolling AI threads By understanding agents, Claude Code, pro…</p>
+          <p class="art-focus"><b>受众观点：</b>①@YotamBlu 强调知道工具和实际出产品之间存在巨大鸿沟，vibe-coding 数月才形成肌肉记忆 ②@__vandos__ 揭示&quot;收藏焦虑&quot;心理——资源全免费但大多数人收藏后永远不打开 ③@asakura0x 和 @0xTrackmind 点名 MCP 与 Claude Code 是 AI 成为真正系统的关键节点</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@YotamBlu (13):</span> @0xwhrrari the gap between knowing about the tools and actually shipping something with them is where most people tap out. i&#x27;ve been vibe-coding with claude for months and it&#x27;s only now that the muscle memory is kicking in.</li><li><span class="ev-user">@__vandos__ (9):</span> @0xwhrrari Every link on this list is free. The people who go through all of them will have a skill set companies are paying $200K+ for. Most people will save this and never open a single link.</li><li><span class="ev-user">@asakura0x (6):</span> @0xwhrrari agents memory skills and mcp are where ai becomes a real system</li><li><span class="ev-user">@0xTrackmind (5):</span> @0xwhrrari claude code and mcp are where the workflow starts getting serious</li><li><span class="ev-user">@beamnxw (4):</span> @0xwhrrari just stop scrolling threads and start building the stack</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S10 · @realCaigu</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.9k 赞 · 29 评 · 235k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/realCaigu/status/2063474566106927314" target="_blank" rel="noopener">中文推文整理谷歌前 CEO 观点，主张掌握 Claude Code、MCP、memory、agents 体系才能真正用 AI 赚钱，并附 Anthropic 官方免费课程链接合集。</a></h3>
+          <p class="art-summary">谷歌前 CEO 强调了一个热知识： 如果你真的想赚钱，必须学习：理解代理、Claude Code、提示、记忆、技能、MCP和例程 然后让你的 AI 来控制你的 AI 大部分人学 AI, 就是在推特刷 AI 帖子，但其实，真正系统性的知识，大模型公司官方出的全面且免费，务必收藏这条帖子： 代理架构 https://t.co/G7am15VYdN</p>
+          <p class="art-focus"><b>受众观点：</b>①@Hamburgerai 详细拆解了提示工程+Claude.md+MCP+例程循环的实现路径，推荐从代理架构入手 ②其余评论质量低但出现对&quot;英文资源是否有效&quot;的质疑，反映中文圈的语言门槛焦虑</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Hamburgerai (13):</span> @realCaigu 真正的高阶玩法是“AI控制AI”：先用提示工程+Claude.md记忆搭建个人知识库，再通过MCP让代理调用外部工具，最后用例程实现循环优化。Anthropic学院的课程把这些串起来了，学完能直接把个人生产力提升10倍以上，强烈推荐从代理架构那篇开始。</li><li><span class="ev-user">@ideos2652922 (1):</span> @realCaigu 这不扯淡嘛！完全挂羊头卖狗肉！没这么欺负不懂英文没这么忽悠人骗流量的。</li><li><span class="ev-user">@shlan128 (1):</span> @realCaigu https://t.co/QjoCBvVkAa AI 记忆不应该只是一个文件外挂系统</li><li><span class="ev-user">@realCaigu (0):</span> @grok 标记视频源头链接</li><li><span class="ev-user">@BlockView0214 (0):</span> @realCaigu 所以最终还是要雇人打工，要不就是雇Agent</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S12 · @IndieDevHailey</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.6k 赞 · 101 评 · 119k 阅</span>
+              <span>🔥🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/IndieDevHailey/status/2063078388903125148" target="_blank" rel="noopener">开源视频编辑器 Clypra 在 GitHub 快速崛起，基于 Tauri + React + TypeScript 构建，目标是将剪映 Pro 的付费功能全部本地免费化，支持跨平台运行。</a></h3>
+          <p class="art-summary">看到这个，我默默取消了剪映订阅… Clypra，GitHub 上快速崛起的开源视频编辑器。 用 Tauri + React + TypeScript 打造，专注把 CapCut / 剪映 Pro 的付费高级功能全部本地免费化。 跨平台（macOS/Windows/Linux），FFmpeg 驱动，原生性能。 以前： https://t.co/U92UuGlgyV</p>
+          <p class="art-focus"><b>受众观点：</b>①@TerryJxc 系统对比 Clypra、OpenCut、Shotcut、Kdenlive 各自适用场景，关注短期生产可用性 ②@baibaida 关注导出速度/稳定性和本地化数据隐私问题（不想让素材上传云端被用于训练）③@Validate_QA 指出 Clypra 缺少剪映的导出精细度和特效打磨</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@IndieDevHailey (38):</span> https://t.co/7TbZdTbAeg</li><li><span class="ev-user">@TerryJxc (27):</span> @IndieDevHailey 想最像 CapCut 的体验 应该优先 OpenCut（浏览器秒开，最接近）。 想要稳定、可长期用的桌面工具 选Shotcut（轻量首选）或 Kdenlive（功能党首选）。 Clypra 本身 可以继续 Star 关注，它轻量+原生桌面是优势，未来 PR 社区迭代可能会追上来，但短期内不是最优生产方案。</li><li><span class="ev-user">@Validate_QA (8):</span> @IndieDevHailey clypra&#x27;s still early, missing a bunch of jianying&#x27;s export and effect polish that paid users rely on daily</li><li><span class="ev-user">@baibaida (3):</span> @IndieDevHailey 开源把付费墙一个个拆了 最近这种越来越多 不过视频编辑这种 本地跑得顺不顺才是命门 你用下来导出速度和稳定性 比剪映差多少</li><li><span class="ev-user">@baibaida (3):</span> @IndieDevHailey 本地化+免费这套最戳我的其实不是省钱 是素材不用传云端赌隐私 现在剪点东西都怕被拿去训练模型... 就是开源剪辑器我之前试过两三个 上手快 稳定性总差一口气 这个导出大文件扛得住吗</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S15 · @GoJun315</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>431 赞 · 20 评 · 41.1k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/GoJun315/status/2054556685222674462" target="_blank" rel="noopener">介绍开源反检测浏览器 CloakBrowser（深度魔改 Chromium），reCAPTCHA v3 评分0.9，可自动绕过 Cloudflare 验证，覆盖14项主流爬虫检测场景。</a></h3>
+          <p class="art-summary">反检测浏览器一个月动辄收几百块，现在有人直接开源了一个能打的平替。 CloakBrowser，一个深度魔改的 Chromium 浏览器，专治爬虫和自动化场景下的各种检测。 - reCAPTCHA v3 评分 0.9，达到跟真人一个水平 - 主流爬虫检测 14 项全过，Cloudflare 验证也能自动绕过 - 完全兼容 https://t.co/NnWoufdcdF</p>
+          <p class="art-focus"><b>受众观点：</b>①@neohob 关注替代方案：patchright（playwright魔改版）+ 指纹插件组合是否能替代 CloakBrowser，且实测抓咸鱼无封号风险；②@LiQiuJIong 关注具体能力：模拟鼠标动作能否过验证码；③@nouzuonoudie 提出竞品 Scrapling，认为功能更强。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@neohob (7):</span> @GoJun315 playwright的魔改pathcright加上指纹插件一样可以，抓咸鱼好像还没什么封过，而且我还没用patchright用的还是原版playwright</li><li><span class="ev-user">@wangmaocheng3 (0):</span> @GoJun315 star了，有需要再用</li><li><span class="ev-user">@LiQiuJIong (0):</span> @GoJun315 模拟鼠标动作过验证码可以么</li><li><span class="ev-user">@nouzuonoudie (0):</span> @GoJun315 Scrapling，更强大一些</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-twitter">Twitter S18 · @iluciddreaming</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>379 赞 · 50 评 · 61.4k 阅</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://x.com/iluciddreaming/status/2054797981807947793" target="_blank" rel="noopener">介绍开源工具 Agent Reach，封装 yt-dlp、twitter-cli 等17个底层工具，让 AI Agent 一键获得抓取小红书热帖、YouTube字幕、GitHub等平台内容的能力，10分钟安装完成。</a></h3>
+          <p class="art-summary">以前做素材收集，手动翻平台至少半小时。 装了 Agent Reach 之后： 小红书热帖 → 自动抓 YouTube 视频 → 一键拉字幕 GitHub/V2EX → 搜关键词 一行命令，AI 直接帮你整理。 17 个平台，10 分钟装好。怎么用 → 视频 ↓ 00:00 开场：AgentReach 简介，给 AI Agent 一键装上互联网能力，10 https://t.co/AxksaH1j…</p>
+          <p class="art-focus"><b>受众观点：</b>①@iluciddreaming（作者）强调它是各底层工具上面套一层，类比大模型上面的龙虾；②@Blackie_zZ 关注风险：用自己账号cookie跑 X/Reddit/小红书有封号风险，建议用小号；③@wangdefou 感叹内容硬核学不完，反映受众对工具链集成方案的高学习意愿。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@iluciddreaming (4):</span> 无痛才能持续出摊。 它就是各个底层工具（yt-dlp、twitter-cli、rdt-cli、Jina Reader 等）上面的套的一层。想象成大模型上面的龙虾，或者 Hermes。</li><li><span class="ev-user">@Blackie_zZ (2):</span> @iluciddreaming X，reddit 和小红书使用的是自己账号的cookie，有一定的封号风险，记得不要用大号跑！大佬最后也提了用小号</li><li><span class="ev-user">@AomyYing (2):</span> @iluciddreaming 仰望 太牛了 感谢分享</li><li><span class="ev-user">@wangdefou (1):</span> @iluciddreaming 最近大佬分享的内容太硬核了，学不完实在学不完</li><li><span class="ev-user">@Janegtys0527 (1):</span> @iluciddreaming 感谢分享</li></ul>
+          </details>
+        </div></div>
+      <div class="tab-view" data-view-type="table" style="display:none"><div class="overflow-x-auto">
+<table class="data-table">
+<thead><tr>
+  <th class="w-1/3">标题</th>
+  <th class="w-1/3">概述</th>
+  <th class="w-1/3">受众观点</th>
+</tr></thead>
+<tbody class="font-serif">
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/AnthropicAI/status/2062568862479208923" target="_blank" rel="noopener">Anthropic 官方发布内部数据显示 Claude 正在加速 AI 开发进程并可能触发递归自我改进，工程师代码产出量五年间提升八倍，被认为是 AI 加速时代的重要信号。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>28.1k 赞 · 1688 评 · 17818k 阅</span>
+              <span>🔥🔥🔥</span>
+              <span class="text-[10px]">Twitter S2</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Anthropic 官方发布内部数据显示 Claude 正在加速 AI 开发进程并可能触发递归自我改进，工程师代码产出量五年间提升八倍，被认为是 AI 加速时代的重要信号。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者一线角度切入：Anthropic 说工程师 8x 代码产出，作为用 Claude 构建真实产品的 indie dev，实际 shipping 速度变化了多少？用具体产品迭代节点给出一手数据对比，比评论区情绪反应更有信息密度。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① AI 角色颠倒的幽默焦虑共鸣（@MediaOffScript：本来该是我的助手，结果我成了它的助手）② 对递归自我改进真实进展的震惊和好奇（@AISafetyMemes 强烈情绪反应）③ 对 Anthropic 官方信息可信度的调侃（@TarikElyass 质疑这条推文是否由 Claude 生成）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/OpenAI/status/2061845949170045346" target="_blank" rel="noopener">OpenAI 发布 Codex Sites 功能，允许用户用自然语言把工作内容和想法生成为可交互网站或 App 并通过 URL 分享，目前向 Business 和 Enterprise 用户优先开放。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>19.5k 赞 · 943 评 · 9368.9k 阅</span>
+              <span>🔥🔥🔥</span>
+              <span class="text-[10px]">Twitter S3</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>OpenAI 发布 Codex Sites 功能，允许用户用自然语言把工作内容和想法生成为可交互网站或 App 并通过 URL 分享，目前向 Business 和 Enterprise 用户优先开放。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：切入评论区已有的 demo vs production 讨论（@rameswar08 提出 impressive demo 和 production tool 之间的鸿沟），以实际在用 AI 工具 ship 产品的独立开发者身份给出具体经验，避免情绪化反应给出有信息量的判断。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>① 传统 CS 技能和工程师价值被取代的焦虑（@NovaXCode：计算机学位正在变成昂贵的博物馆文物）② 对 Lovable/Bolt 等现有竞品市场冲击的关注（@SahilPanhotra 暗示这些创业公司处境尴尬）③ demo 精彩但生产可靠性存疑（@rameswar08 指出从 impressive prototype 到 team can depend on 之间差距显著）</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/interaction/status/2062575428213285352" target="_blank" rel="noopener">AI agent Poke 获得 Apple 官方批准，成为首个也是唯一一个可在 Apple Messages 平台上运行的 AI agent。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>5.2k 赞 · 415 评 · 4352.3k 阅</span>
+              <span>🔥🔥🔥</span>
+              <span class="text-[10px]">Twitter S6</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>AI agent Poke 获得 Apple 官方批准，成为首个也是唯一一个可在 Apple Messages 平台上运行的 AI agent。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者视角分析&quot;平台准入&quot;对 AI agent 产品的战略意义——能进 iMessage 生态意味着什么，门槛在哪，对其他 agent 产品有何启示。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@marvinvonhagen 关注基础设施可靠性提升，认为速度和稳定性是 agent 产品核心竞争力 ②@rauchg 点出这可能是首个&quot;让普通人也能理解&quot;的 agent，聚焦大众可用性 ③@tenobrus 质疑实际落地效果，新渠道并未真正响应，产品与宣传有落差</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/0xwhrrari/status/2063244577482440978" target="_blank" rel="noopener">围绕谷歌前 CEO 观点展开的推文，主张真正用 AI 赚钱必须系统学习 agents、Claude Code、MCP、memory 等核心技术栈，而非刷帖消费内容。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>4.6k 赞 · 80 评 · 1139.4k 阅</span>
+              <span>🔥🔥🔥</span>
+              <span class="text-[10px]">Twitter S7</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>围绕谷歌前 CEO 观点展开的推文，主张真正用 AI 赚钱必须系统学习 agents、Claude Code、MCP、memory 等核心技术栈，而非刷帖消费内容。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从实际用 Claude Code 和 MCP 构建 agent 工作流的开发者角度，分享&quot;知道工具&quot;和&quot;真正 ship 东西&quot;之间的鸿沟，结合独立开发经历聊 muscle memory 如何建立。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@YotamBlu 强调知道工具和实际出产品之间存在巨大鸿沟，vibe-coding 数月才形成肌肉记忆 ②@__vandos__ 揭示&quot;收藏焦虑&quot;心理——资源全免费但大多数人收藏后永远不打开 ③@asakura0x 和 @0xTrackmind 点名 MCP 与 Claude Code 是 AI 成为真正系统的关键节点</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/realCaigu/status/2063474566106927314" target="_blank" rel="noopener">中文推文整理谷歌前 CEO 观点，主张掌握 Claude Code、MCP、memory、agents 体系才能真正用 AI 赚钱，并附 Anthropic 官方免费课程链接合集。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.9k 赞 · 29 评 · 235k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter S10</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>中文推文整理谷歌前 CEO 观点，主张掌握 Claude Code、MCP、memory、agents 体系才能真正用 AI 赚钱，并附 Anthropic 官方免费课程链接合集。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从真实构建 agent 工作流的开发者角度，用中文圈可理解的语言拆解&quot;AI 控制 AI&quot;底层逻辑——Claude.md 记忆 + MCP 工具调用 + 例程循环如何组合成实际生产力系统。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@Hamburgerai 详细拆解了提示工程+Claude.md+MCP+例程循环的实现路径，推荐从代理架构入手 ②其余评论质量低但出现对&quot;英文资源是否有效&quot;的质疑，反映中文圈的语言门槛焦虑</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/IndieDevHailey/status/2063078388903125148" target="_blank" rel="noopener">开源视频编辑器 Clypra 在 GitHub 快速崛起，基于 Tauri + React + TypeScript 构建，目标是将剪映 Pro 的付费功能全部本地免费化，支持跨平台运行。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>1.6k 赞 · 101 评 · 119k 阅</span>
+              <span>🔥🔥</span>
+              <span class="text-[10px]">Twitter S12</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>开源视频编辑器 Clypra 在 GitHub 快速崛起，基于 Tauri + React + TypeScript 构建，目标是将剪映 Pro 的付费功能全部本地免费化，支持跨平台运行。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者视角分析&quot;开源平替付费订阅&quot;这条产品路线的可行性——Clypra 的 Tauri + FFmpeg 技术选型对本地性能意味着什么，同类工具如何在稳定性和功能完整度之间取舍。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@TerryJxc 系统对比 Clypra、OpenCut、Shotcut、Kdenlive 各自适用场景，关注短期生产可用性 ②@baibaida 关注导出速度/稳定性和本地化数据隐私问题（不想让素材上传云端被用于训练）③@Validate_QA 指出 Clypra 缺少剪映的导出精细度和特效打磨</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/GoJun315/status/2054556685222674462" target="_blank" rel="noopener">介绍开源反检测浏览器 CloakBrowser（深度魔改 Chromium），reCAPTCHA v3 评分0.9，可自动绕过 Cloudflare 验证，覆盖14项主流爬虫检测场景。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>431 赞 · 20 评 · 41.1k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter S15</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>介绍开源反检测浏览器 CloakBrowser（深度魔改 Chromium），reCAPTCHA v3 评分0.9，可自动绕过 Cloudflare 验证，覆盖14项主流爬虫检测场景。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者做爬虫工具的实战角度切入——开源 anti-detection 方案的可行性与代价：CloakBrowser 这类工具确实能解决指纹检测问题，但评论区 @neohob 指出 patchright + 指纹插件同样能做到，且在抓取咸鱼时从未触发封号。真正的问题是：选现成工具还是自己组合轻量方案，取决于维护成本和目标平台风险。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@neohob 关注替代方案：patchright（playwright魔改版）+ 指纹插件组合是否能替代 CloakBrowser，且实测抓咸鱼无封号风险；②@LiQiuJIong 关注具体能力：模拟鼠标动作能否过验证码；③@nouzuonoudie 提出竞品 Scrapling，认为功能更强。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://x.com/iluciddreaming/status/2054797981807947793" target="_blank" rel="noopener">介绍开源工具 Agent Reach，封装 yt-dlp、twitter-cli 等17个底层工具，让 AI Agent 一键获得抓取小红书热帖、YouTube字幕、GitHub等平台内容的能力，10分钟安装完成。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>379 赞 · 50 评 · 61.4k 阅</span>
+              <span>🔥</span>
+              <span class="text-[10px]">Twitter S18</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>介绍开源工具 Agent Reach，封装 yt-dlp、twitter-cli 等17个底层工具，让 AI Agent 一键获得抓取小红书热帖、YouTube字幕、GitHub等平台内容的能力，10分钟安装完成。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者构建 AI agent 数据采集层的角度切入——Agent Reach 本质是把 yt-dlp、Jina Reader 等成熟工具包成统一接口，这种胶水层思路跟统一爬虫API的理念有天然共鸣：真正的壁垒不是采集能力本身，而是把17个工具的认证、限速、错误处理统一管理后的可靠性。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@iluciddreaming（作者）强调它是各底层工具上面套一层，类比大模型上面的龙虾；②@Blackie_zZ 关注风险：用自己账号cookie跑 X/Reddit/小红书有封号风险，建议用小号；③@wangdefou 感叹内容硬核学不完，反映受众对工具链集成方案的高学习意愿。</p>
+          </td>
+        </tr></tbody>
+</table></div></div>
+    </div>
+    <div class="tab-panel" data-tab-panel="tab-4">
+      <div class="tab-view" data-view-type="list" style="display:block">
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-ph">PH PH1</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://www.producthunt.com/products/google-labs" target="_blank" rel="noopener">Google Labs推出Dreambeans，每晚自动整合Gmail、日历、照片、YouTube和搜索数据生成个性化AI故事集并每日推送。</a></h3>
+          <p class="art-summary">Google Labs</p>
+          <p class="art-focus"><b>受众观点：</b>①@Ozan 指出主动推送摘要的核心风险是用户一周后开始无视，关键在过滤质量；②@Ozan 关注产品如何随时间调整相关性算法实现个性化；③评论区提到布局&quot;非常像Pinterest&quot;，关注产品视觉定位与差异化问题。</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Overview (0):</span> * [Launches13](/products/google-labs/launches) * [Reviews1](/products/google-labs/reviews) * [Alternatives](/products/google-labs/alternatives) * [Built with](/products/google-labs/built-with) * [Team](/products/google-labs/makers) * [Awards](/products/google-labs/awards) * More…</li><li><span class="ev-user">@Ozan (0):</span> [AISA AI Skills Test ](/products/aisa-ai-skills-test-ai-leaderboard) the proactive angle is the interesting bet here. risk with any daily digest is it surfaces noise and people learn to skim past it within a week. lives or dies on the filtering, 3 things that actually matter bea…</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-ph">PH PH2</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://www.producthunt.com/products/wave-16" target="_blank" rel="noopener">Wave 是 macOS 上的语音触发 AI 工具，按住热键说话后松开，转录和 AI 处理结果自动出现在光标位置，支持本地 Whisper 和多模型自选。</a></h3>
+          <p class="art-summary">Wave</p>
+          <p class="art-focus"><b>受众观点：</b>①@Suryansh 关注项目是否开放贡献或开源 ②@Drivebase 强调无订阅无模型锁定理念并解释 floating UI 交互（pill 在屏幕底部中央） ③评论区聚焦「阅读中查询」的 context-switch 痛点</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Transcription (0):</span> Wave lets you invoke an AI model anywhere on macOS using just your voice. Hold a hotkey, speak, and release—your speech is transcribed, processed, and the result appears exactly where you need it. If you&#x27;re typing, it replaces or inserts text. If you&#x27;re reading, it shows a float…</li><li><span class="ev-user">@Drivebase (0):</span> Maker 📌 Hey everyone 👋 Wave is a simple idea done properly: speech to text that doesn’t lock you in. Most tools either: \* limit you to one model \* force cloud usage \* or stop at basic transcription Wave focuses on doing two things well: 1\. Speech → text (Whisper-based) \* Fa…</li><li><span class="ev-user">@Suryansh (0):</span> [@monawwar](https://www.producthunt.com/@monawwar) Interesting concept is there any way of contribution? Upvote Report Share 32m ago [](/@ansari%5Fadin) [Ansari Adin](/@ansari%5Fadin) the floating answer mode for when you&#x27;re reading is the use case i keep thinking about. right n…</li><li><span class="ev-user">@Drivebase (0):</span> Maker [@ansari\_adin](https://www.producthunt.com/@ansari%5Fadin) agreed &lt;3, and as for your question, the pill appears at the bottom center of the screen Upvote (1) Report Share 10h ago [](/@david%5Fmarko)</li><li><span class="ev-user">@Drivebase (0):</span> Maker [@david\_marko](https://www.producthunt.com/@david%5Fmarko) Thank you David for the feedback. Upvote (1) Report Share 11h ago [](/@artstavenka1) [Art Stavenka](/@artstavenka1) Open and free with local Whisper is the part that&#x27;d get me to actually install it. Interested in…</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-ph">PH PH3</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://www.producthunt.com/products/cabinlink" target="_blank" rel="noopener">CabinLink 通过读取机舱 WiFi 飞行 manifest 数据，在 iPhone 上以原生 App 体验呈现实时飞行信息，断网后保留最后一次读数。</a></h3>
+          <p class="art-summary">CabinLink</p>
+          <p class="art-focus"><b>受众观点：</b>①@CabinLink 说明产品仅适用于提供机舱 WiFi 的航空公司并维护支持列表 ②评论关注无 WiFi 航空公司的边界 ③断网保留最后读数的设计获正向反馈</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Overview (0):</span> * [Reviews](/products/cabinlink/reviews) * [Alternatives](/products/cabinlink/alternatives) * [Built with](/products/cabinlink/built-with) * [Team](/products/cabinlink/makers) * [Awards](/products/cabinlink/awards) * More Free Launch tags:[Weather](/topics/weather)•[User Experie…</li><li><span class="ev-user">@CabinLink (0):</span> Maker 📌 Hi Product Hunt, I built CabinLink because airline Wi-Fi portals often have a useful flight map, but the details are buried, slow, or disappear when the cabin connection gets flaky. CabinLink reads supported onboard flight manifests over cabin Wi-Fi and turns them into a…</li><li><span class="ev-user">@CabinLink (0):</span> Maker [@naresh\_chandanbatve](https://www.producthunt.com/@naresh%5Fchandanbatve) there are airlines that don’t offer in-flight WiFi and hence this app isn’t for them. Go to vishrut.co/cabinlink to see an ever-growing list of supported airlines Upvote Report Share 6h ago [](/@re…</li><li><span class="ev-user">@CabinLink (0):</span> Maker</li></ul>
+          </details>
+        </div>
+
+        <div class="article">
+          <div class="flex justify-between items-baseline">
+            <span class="art-src src-ph">PH PH4</span>
+            <div class="flex gap-2 items-center" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <h3 class="art-title"><a class="hover:underline" href="https://www.producthunt.com/products/free-job-postings-api" target="_blank" rel="noopener">bluedoor.sh 推出的免费职位招聘数据 API，覆盖 API、AI 和数据三个标签，可用于趋势分析和 AI 应用开发。</a></h3>
+          <p class="art-summary">Job Postings API</p>
+          <p class="art-focus"><b>受众观点：</b>①@Mailwarm 关注 salary range 和 remote policy 字段数据一致性问题 ②评论区认可历史数据用于趋势分析的价值</p>
+          
+          <details class="evidence-fold">
+            <summary>展开评论</summary>
+            <ul class="evidence-list"><li><span class="ev-user">@Overview (0):</span> * [Reviews](/products/free-job-postings-api/reviews) * [Alternatives](/products/free-job-postings-api/alternatives) * [Team](/products/free-job-postings-api/makers) * [Awards](/products/free-job-postings-api/awards) * More Free Launch tags:[API](/topics/api-1)•[Artificial Intell…</li><li><span class="ev-user">@Mailwarm (0):</span> Historical job data is super useful for trend analysis. Do you expose fields like salary ranges and remote policy consistently, or is that only available when the ATS includes it? Upvote Report Share 11h ago [](/@samuel%5Fcrombie) [Sam Crombie](/@samuel%5Fcrombie) [Job Postings…</li></ul>
+          </details>
+        </div></div>
+      <div class="tab-view" data-view-type="table" style="display:none"><div class="overflow-x-auto">
+<table class="data-table">
+<thead><tr>
+  <th class="w-1/3">标题</th>
+  <th class="w-1/3">概述</th>
+  <th class="w-1/3">受众观点</th>
+</tr></thead>
+<tbody class="font-serif">
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://www.producthunt.com/products/google-labs" target="_blank" rel="noopener">Google Labs推出Dreambeans，每晚自动整合Gmail、日历、照片、YouTube和搜索数据生成个性化AI故事集并每日推送。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+              <span class="text-[10px]">PH PH1</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Google Labs推出Dreambeans，每晚自动整合Gmail、日历、照片、YouTube和搜索数据生成个性化AI故事集并每日推送。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者产品视角评价Dreambeans的设计逻辑——Google押注个人数据日报场景的核心赌注是什么，proactive AI digest的成败关键在过滤质量而非信息量，结合数据聚合产品的构建经验来拆解这个产品。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@Ozan 指出主动推送摘要的核心风险是用户一周后开始无视，关键在过滤质量；②@Ozan 关注产品如何随时间调整相关性算法实现个性化；③评论区提到布局&quot;非常像Pinterest&quot;，关注产品视觉定位与差异化问题。</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://www.producthunt.com/products/wave-16" target="_blank" rel="noopener">Wave 是 macOS 上的语音触发 AI 工具，按住热键说话后松开，转录和 AI 处理结果自动出现在光标位置，支持本地 Whisper 和多模型自选。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+              <span class="text-[10px]">PH PH2</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>Wave 是 macOS 上的语音触发 AI 工具，按住热键说话后松开，转录和 AI 处理结果自动出现在光标位置，支持本地 Whisper 和多模型自选。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从独立开发者工具设计角度评价 Wave 的「无锁定」哲学——本地优先、模型自选、无订阅，对比市场上强推云端单一模型的竞品，代表开发者更认可的产品设计取向。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@Suryansh 关注项目是否开放贡献或开源 ②@Drivebase 强调无订阅无模型锁定理念并解释 floating UI 交互（pill 在屏幕底部中央） ③评论区聚焦「阅读中查询」的 context-switch 痛点</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://www.producthunt.com/products/cabinlink" target="_blank" rel="noopener">CabinLink 通过读取机舱 WiFi 飞行 manifest 数据，在 iPhone 上以原生 App 体验呈现实时飞行信息，断网后保留最后一次读数。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+              <span class="text-[10px]">PH PH3</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>CabinLink 通过读取机舱 WiFi 飞行 manifest 数据，在 iPhone 上以原生 App 体验呈现实时飞行信息，断网后保留最后一次读数。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从 indie dev「找已有数据重新包装体验」的切入策略角度讨论——航空公司数据本就在 WiFi 门户里，CabinLink 做的是把差体验变成原生好体验，这是独立开发者找细分场景的经典路径。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@CabinLink 说明产品仅适用于提供机舱 WiFi 的航空公司并维护支持列表 ②评论关注无 WiFi 航空公司的边界 ③断网保留最后读数的设计获正向反馈</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="font-bold text-[16px] leading-tight mb-2" style="font-family:'Noto Serif SC',serif"><a class="hover:underline" href="https://www.producthunt.com/products/free-job-postings-api" target="_blank" rel="noopener">bluedoor.sh 推出的免费职位招聘数据 API，覆盖 API、AI 和数据三个标签，可用于趋势分析和 AI 应用开发。</a></div>
+            <div class="flex gap-2 items-center flex-wrap" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-3)">
+              <span>—</span>
+              <span>🔥</span>
+              <span class="text-[10px]">PH PH4</span>
+            </div>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>bluedoor.sh 推出的免费职位招聘数据 API，覆盖 API、AI 和数据三个标签，可用于趋势分析和 AI 应用开发。</p>
+            <p class="mt-1 text-[#6b6157] italic">角度：从数据 API 消费者视角评价「免费结构化数据入口」的产品策略价值——职位数据是 AI agent 和招聘工具的高价值数据源，免费层是开发者冷启动的常见且有效路径。</p>
+          </td>
+          <td class="text-[13px] leading-relaxed">
+            <p>①@Mailwarm 关注 salary range 和 remote policy 字段数据一致性问题 ②评论区认可历史数据用于趋势分析的价值</p>
+          </td>
+        </tr></tbody>
+</table></div></div>
+    </div></div>
+</section>
+
+  <footer class="colophon">
+    <div>
+      <h5><a>往期热点</a></h5>
+    </div>
+    <div>
+    </div>
+    <div>
+      <h5>本期数据</h5>
+      日期 2026-06-08 · 扫描 68 条 · 有效 38 条 ·
+      跨平台事件 2 个
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-panel').forEach(function(p){
+        p.classList.toggle('active', p.getAttribute('data-tab-panel') === target);
+      });
+    });
+  });
+  // View switching (list / table) — global across all tabs
+  var currentView = 'list';
+  document.querySelectorAll('.view-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      currentView = btn.getAttribute('data-view');
+      document.querySelectorAll('.view-btn').forEach(function(b){
+        if(b.getAttribute('data-view') === currentView){
+          b.style.background = '#1a1714'; b.style.color = '#f7f4ec';
+        } else {
+          b.style.background = 'transparent'; b.style.color = '#1a1714';
+        }
+      });
+      document.querySelectorAll('.tab-view').forEach(function(v){
+        v.style.display = v.getAttribute('data-view-type') === currentView ? 'block' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
