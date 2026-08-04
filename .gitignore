@@ -1,7 +1,11 @@
 # Dependencies
 node_modules/
 public/
-wechat/
+
+# wechat automation: track the tooling (scripts/tests/docs), ignore per-run output.
+# Keeping the generated output ignored also keeps the pipeline's worktree-clean
+# check happy when it writes into wechat/articles/<date>/.
+wechat/articles/
 
 # Package manager caches / logs
 .pnpm-store/
@@ -38,5 +42,5 @@ Thumbs.db
 SEO_AUDIT.md
 SEO_PLAN.md
 .claude/
-skills/
 CONTEXT.md
+

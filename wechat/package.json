@@ -1,0 +1,17 @@
+{
+  "name": "it-hotspot-wechat",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-wechat.mjs",
+    "publish:hotspot": "node scripts/run-hotspot-pipeline.mjs",
+    "publish:draft": "node scripts/publish-draft.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

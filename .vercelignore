@@ -1,0 +1,4 @@
+# The deployed site is the generated `public/` output only (see vercel.json).
+# Exclude the WeChat automation workspace from the Vercel build/deploy so it can
+# live in the repo (for other machines to run) without ever touching the site.
+wechat/
