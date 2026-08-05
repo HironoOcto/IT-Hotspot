@@ -436,7 +436,7 @@ function renderArchiveHtml(issues) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:wght@700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;900&display=swap"
   />
   <link rel="icon" href="../favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
@@ -475,7 +475,7 @@ function renderArchiveHtml(issues) {
       margin: 0;
       background: radial-gradient(circle at top, #fbf7ef 0%, var(--paper) 56%, #f0e7d8 100%);
       color: var(--ink);
-      font-family: "Noto Sans SC", sans-serif;
+      font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
     }
     a { color: inherit; text-decoration: none; }
     .page {
@@ -496,7 +496,7 @@ function renderArchiveHtml(issues) {
     }
     .masthead-copy,
     .masthead-meta {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.8;
@@ -505,7 +505,7 @@ function renderArchiveHtml(issues) {
     }
     .masthead-meta { text-align: right; }
     .brand {
-      font-family: "Playfair Display", "Noto Serif SC", serif;
+      font-family: "MedievalSharp", "Noto Serif SC", serif;
       font-size: clamp(64px, 9vw, 88px);
       line-height: 0.95;
       letter-spacing: -0.05em;
@@ -566,7 +566,7 @@ function renderArchiveHtml(issues) {
       margin: 0;
       display: grid;
       gap: 10px;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
@@ -600,7 +600,7 @@ function renderArchiveHtml(issues) {
       min-height: 32px;
       border: 1px solid var(--rule);
       background: var(--paper-2);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -616,7 +616,7 @@ function renderArchiveHtml(issues) {
     }
     .archive-header .kicker {
       color: var(--accent);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       letter-spacing: 0.12em;
       font-size: 14px;
       text-transform: uppercase;
@@ -662,7 +662,7 @@ function renderArchiveHtml(issues) {
       background: var(--rule-soft);
     }
     .month-header span {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       color: var(--muted);
       font-size: 13px;
       letter-spacing: 0.12em;
@@ -685,7 +685,7 @@ function renderArchiveHtml(issues) {
     }
     .issue-date {
       text-align: center;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       text-transform: uppercase;
     }
     .issue-day {
@@ -705,7 +705,7 @@ function renderArchiveHtml(issues) {
       min-width: 0;
     }
     .issue-kicker {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       color: var(--muted);
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -729,7 +729,7 @@ function renderArchiveHtml(issues) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       text-align: right;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
     }
     .issue-metrics strong {
       display: block;
@@ -758,14 +758,14 @@ function renderArchiveHtml(issues) {
     .footer h5 {
       margin: 0 0 10px;
       color: var(--ink);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
     .footer-note {
       margin-top: 14px;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Space Mono", monospace;
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -795,7 +795,7 @@ function renderArchiveHtml(issues) {
     <header class="masthead">
       <div class="masthead-row">
         <div class="masthead-copy">独立开发 · 出海 · AI 创业<br />内容归档 · 报纸版</div>
-        <p class="brand">HOTSPOT</p>
+        <p class="brand">Hotspot</p>
         <div class="masthead-meta">ARCHIVE INDEX<br />SINCE ${archiveData.at(-1).year}</div>
       </div>
       <nav class="top-nav" aria-label="Primary">
