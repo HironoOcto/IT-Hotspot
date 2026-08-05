@@ -64,13 +64,9 @@ pnpm test
 
 ### 自动建公众号草稿
 
-将公众号开放接口凭证放到：
+公众号开放接口凭证按优先级读取：`--credentials <path>` > 环境变量 `WECHAT_APP_ID`/`WECHAT_APP_SECRET`（推荐，跨机器不落盘）> 默认文件 `wechat/wechat-credentials.txt`（兼容旧名 `wechat/tmp.txt`）。凭证含密钥，已在 `.gitignore` 忽略，切勿提交。
 
-```text
-wechat/tmp.txt
-```
-
-支持：
+文件格式支持：
 
 ```text
 AppID=wx...

@@ -10,6 +10,7 @@ import {
   collectLocalImageSources,
   ensureWeChatSuccess,
   parseCredentialFile,
+  resolveCredentials,
   planThumbAsset,
   replaceImageSources,
 } from "../scripts/publish-draft.mjs";
@@ -29,6 +30,33 @@ test("parseCredentialFile reads AppID and AppSecret from tmp.txt style content",
       appId: "wx1234567890abcdef",
       appSecret: "secret-value-1234567890",
     });
+  } finally {
+    await rm(workspace, { recursive: true, force: true });
+  }
+});
+
+test("resolveCredentials honours explicit file > env vars", async () => {
+  const workspace = mkdtempSync(path.join(tmpdir(), "wechat-credentials-"));
+  const filePath = path.join(workspace, "creds.txt");
+  writeFileSync(filePath, ["AppID=wx-from-file", "AppSecret=secret-from-file"].join("\n"));
+
+  try {
+    // Explicit file wins over env.
+    assert.deepEqual(
+      resolveCredentials({
+        credentialsPath: filePath,
+        env: { WECHAT_APP_ID: "wx-env", WECHAT_APP_SECRET: "secret-env" },
+      }),
+      { appId: "wx-from-file", appSecret: "secret-from-file" }
+    );
+
+    // With no explicit file, env vars are used.
+    assert.deepEqual(
+      resolveCredentials({
+        env: { WECHAT_APP_ID: "wx-env", WECHAT_APP_SECRET: "secret-env" },
+      }),
+      { appId: "wx-env", appSecret: "secret-env" }
+    );
   } finally {
     await rm(workspace, { recursive: true, force: true });
   }

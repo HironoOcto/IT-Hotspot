@@ -23,14 +23,15 @@ const THUMB_QUALITIES = [80, 70, 60, 50, 40, 30, 20];
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const wechatRoot = path.resolve(scriptDir, "..");
-const defaultCredentialsPath = path.join(wechatRoot, "tmp.txt");
+const defaultCredentialsPath = path.join(wechatRoot, "wechat-credentials.txt");
+const legacyCredentialsPath = path.join(wechatRoot, "tmp.txt");
 const defaultArticlesRoot = path.join(wechatRoot, "articles");
 
 function parseArgs(argv) {
   const args = {
     articleDir: "",
     articlesRoot: defaultArticlesRoot,
-    credentials: defaultCredentialsPath,
+    credentials: "",
     date: "",
     submit: false,
   };
@@ -77,6 +78,30 @@ function parseCredentialFile(filePath) {
   }
 
   return { appId, appSecret };
+}
+
+// Resolve WeChat credentials, in priority order:
+//   1. explicit --credentials <path>
+//   2. WECHAT_APP_ID + WECHAT_APP_SECRET env vars (best for other machines / CI —
+//      no secret file on disk)
+//   3. default credential file wechat/wechat-credentials.txt (or legacy tmp.txt)
+// All three keep the secret out of git; see .gitignore.
+function resolveCredentials({ credentialsPath = "", env = process.env } = {}) {
+  if (credentialsPath) return parseCredentialFile(credentialsPath);
+
+  if (env.WECHAT_APP_ID && env.WECHAT_APP_SECRET) {
+    return { appId: env.WECHAT_APP_ID, appSecret: env.WECHAT_APP_SECRET };
+  }
+
+  if (existsSync(defaultCredentialsPath)) return parseCredentialFile(defaultCredentialsPath);
+  if (existsSync(legacyCredentialsPath)) return parseCredentialFile(legacyCredentialsPath);
+
+  throw new Error(
+    `No WeChat credentials found. Provide them one of these ways:\n` +
+      `  - set WECHAT_APP_ID and WECHAT_APP_SECRET env vars, or\n` +
+      `  - create ${defaultCredentialsPath} with lines "AppID=..." and "AppSecret=...", or\n` +
+      `  - pass --credentials <path>.`
+  );
 }
 
 function resolveArticleDir({ articleDir, articlesRoot, date }) {
@@ -308,8 +333,8 @@ function ensureThumbUploadFile(plan) {
   );
 }
 
-async function publishDraft({ articleDir, credentialsPath, submit = false }) {
-  const { appId, appSecret } = parseCredentialFile(credentialsPath);
+async function publishDraft({ articleDir, credentialsPath, submit = false, env = process.env }) {
+  const { appId, appSecret } = resolveCredentials({ credentialsPath, env });
   const { manifest, bodyHtml } = loadDraftArtifacts(articleDir);
   const sourceHtml = manifest.sectionHtml || bodyHtml;
   const accessToken = await requestStableAccessToken({ appId, appSecret });
@@ -396,6 +421,7 @@ export {
   collectLocalImageSources,
   ensureWeChatSuccess,
   parseCredentialFile,
+  resolveCredentials,
   planThumbAsset,
   publishDraft,
   replaceImageSources,

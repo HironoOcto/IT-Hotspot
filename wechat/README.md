@@ -167,13 +167,15 @@ articles/YYYY-MM-DD/draft-manifest.json
 
 ### 自动创建草稿
 
-先把公众号开放接口凭证放到：
+公众号开放接口凭证（`AppID` / `AppSecret`）按优先级从三处读取，任选其一：
 
-```text
-wechat/tmp.txt
-```
+1. `--credentials <path>` 显式指定文件
+2. 环境变量 `WECHAT_APP_ID` + `WECHAT_APP_SECRET`（**推荐用于其他机器 / 自动化**，不用把密钥落到磁盘）
+3. 默认文件 `wechat/wechat-credentials.txt`（兼容旧文件名 `wechat/tmp.txt`）
 
-格式支持这两种：
+> ⚠️ 凭证含密钥，**切勿提交到 git**。`wechat/wechat-credentials.txt` 和 `wechat/tmp.txt` 已在 `.gitignore` 中。
+
+用文件时，格式支持这两种：
 
 ```text
 AppID=wx...
@@ -185,6 +187,13 @@ AppSecret=...
 ```text
 AppID: wx...
 AppSecret: ...
+```
+
+用环境变量时：
+
+```bash
+export WECHAT_APP_ID=wx...
+export WECHAT_APP_SECRET=...
 ```
 
 然后执行：

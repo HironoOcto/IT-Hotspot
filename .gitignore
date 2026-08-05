@@ -7,6 +7,9 @@ public/
 # check happy when it writes into wechat/articles/<date>/.
 wechat/articles/
 
+# WeChat API credentials — MUST never be committed (contains AppSecret).
+wechat/wechat-credentials.txt
+
 # Package manager caches / logs
 .pnpm-store/
 npm-debug.log*
