@@ -18,8 +18,8 @@ const SITE_URL = "https://hotspot.octohirono.dev";
 const ISSUE_FILE_RE = /^(\d{4}-\d{2}-\d{2})-hotspot\.html$/;
 const TOP_STORY_COUNT = 1;
 const FOCUS_ITEM_LIMIT = 3;
-const INDUSTRY_ITEM_LIMIT = 6;
-const OPTIONAL_ITEM_LIMIT = 3;
+const INDUSTRY_ITEM_LIMIT = 10;
+const OPTIONAL_ITEM_LIMIT = 5;
 const HOTSPOT_RED = "#cc2b1f";
 const WECHAT_COVER_OUTPUT = { width: 1187, height: 507 };
 const WECHAT_COVER_VIEWPORT = { width: 1600, height: 900 };
@@ -324,6 +324,12 @@ function dedupeKey(item) {
   return `text:${normalizeText(item.summary).slice(0, 120)}`;
 }
 
+function authorKey(item) {
+  const source = item.source || item.section || "";
+  const match = source.match(/@([A-Za-z0-9_]+)/);
+  return match ? match[1].toLowerCase() : "";
+}
+
 function enrichFromArticles(item, articleItems) {
   const key = item.url ? null : normalizeText(item.summary).slice(0, 90);
   const match =
@@ -350,6 +356,7 @@ function sectionLabel(item) {
 function selectArticleItems(issue) {
   const used = new Set();
   const sections = new Map();
+  const sectionAuthors = new Map();
   const sectionLimits = new Map([
     ["今日头条", TOP_STORY_COUNT],
     ["今日焦点 TOP 3", FOCUS_ITEM_LIMIT],
@@ -367,6 +374,13 @@ function selectArticleItems(issue) {
     if ((sections.get(label) || []).length >= limit) return false;
     const key = dedupeKey(item);
     if (used.has(key)) return false;
+    const author = authorKey(item);
+    if (author) {
+      if (!sectionAuthors.has(label)) sectionAuthors.set(label, new Set());
+      const seen = sectionAuthors.get(label);
+      if (seen.has(author)) return false;
+      seen.add(author);
+    }
     used.add(key);
     if (!sections.has(label)) sections.set(label, []);
     sections.get(label).push(item);

@@ -15,6 +15,7 @@ import { spawnSync } from "node:child_process";
 import {
   buildPublishPayload,
   computeCoverCapturePlan,
+  selectArticleItems,
 } from "../scripts/generate-wechat.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -105,10 +106,11 @@ test("wechat build creates sidecar markdown, html, and cta image from a publishe
     const itemHeadings = [...markdown.matchAll(/^### (\d{2})\. (.+)$/gm)];
     assert.equal(sectionItemCount(markdown, "今日头条"), 1);
     assert.equal(sectionItemCount(markdown, "今日焦点 TOP 3"), 3);
-    assert.equal(sectionItemCount(markdown, "行业热点"), 6);
-    assert.ok(sectionItemCount(markdown, "实战打法") <= 3);
-    assert.ok(sectionItemCount(markdown, "社区热议") <= 3);
-    assert.ok(sectionItemCount(markdown, "新品 Top") <= 3);
+    assert.ok(sectionItemCount(markdown, "行业热点") >= 1);
+    assert.ok(sectionItemCount(markdown, "行业热点") <= 10);
+    assert.ok(sectionItemCount(markdown, "实战打法") <= 5);
+    assert.ok(sectionItemCount(markdown, "社区热议") <= 5);
+    assert.ok(sectionItemCount(markdown, "新品 Top") <= 5);
     assert.ok(sectionItemCount(markdown, "实战打法") >= 1);
     assert.ok(sectionItemCount(markdown, "社区热议") >= 1);
     assert.ok(sectionItemCount(markdown, "新品 Top") >= 1);
@@ -342,6 +344,54 @@ test("wechat audience viewpoints remove direct user handles", async () => {
   } finally {
     await rm(workspace, { recursive: true, force: true });
   }
+});
+
+test("selectArticleItems keeps only one item per author within a section", () => {
+  const issue = {
+    todayHotspot: {
+      summary: "头条内容",
+      section: "今日头条",
+      source: "Twitter L1 · @lead",
+      url: "https://example.com/lead",
+    },
+    top3: [
+      { summary: "焦点一", section: "HN H1", source: "HN H1", url: "https://example.com/t1" },
+      { summary: "焦点二", section: "HN H2", source: "HN H2", url: "https://example.com/t2" },
+      { summary: "焦点三", section: "HN H3", source: "HN H3", url: "https://example.com/t3" },
+    ],
+    articleItems: [
+      {
+        summary: "同作者第一条",
+        category: "行业热点",
+        section: "Twitter L3 · @dupauthor",
+        source: "Twitter L3 · @dupauthor",
+        url: "https://example.com/a1",
+      },
+      {
+        summary: "同作者第二条",
+        category: "行业热点",
+        section: "Twitter L4 · @dupauthor",
+        source: "Twitter L4 · @dupauthor",
+        url: "https://example.com/a2",
+      },
+      {
+        summary: "另一个作者",
+        category: "行业热点",
+        section: "Twitter L5 · @otherauthor",
+        source: "Twitter L5 · @otherauthor",
+        url: "https://example.com/a3",
+      },
+    ],
+  };
+
+  const sections = selectArticleItems(issue);
+  const industry = sections.get("行业热点") || [];
+  const summaries = industry.map((item) => item.summary);
+
+  assert.equal(industry.length, 2);
+  assert.ok(summaries.includes("同作者第一条"));
+  assert.ok(!summaries.includes("同作者第二条"));
+  assert.ok(summaries.includes("另一个作者"));
 });
 
 test("wechat sidecar outputs have a local package script and per-run output is ignored by git", () => {
