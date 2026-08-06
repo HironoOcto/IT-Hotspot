@@ -288,15 +288,29 @@ function verifyScanReport(context) {
 // an aborted phase5 leaves them verbatim in the file (the 2026-07-31 scan shipped
 // 680 of them). This catches the symptom directly even if the run report were
 // ever out of sync with the scan.
+//
+// Exception: items explicitly marked degraded (`<降级:...>`, e.g. low-priority
+// posts phase5 intentionally skips) legitimately leave placeholders like
+// <TODO_LLM:angle> and never reach the published output, so we exempt those
+// blocks. We split the scan into per-item "### ..." blocks and only count
+// placeholders in ordinary (non-degraded) items — the 2026-07-31 failure had no
+// `<降级` markers at all, so its placeholders are still flagged.
 function detectScanPlaceholders(markdown) {
-  const matches = markdown.match(/<TODO_LLM:[^>]*>/g) ?? [];
   const counts = new Map();
-  for (const marker of matches) {
-    counts.set(marker, (counts.get(marker) ?? 0) + 1);
+  let count = 0;
+  for (const block of markdown.split(/^###\s/m)) {
+    if (block.includes("<降级")) continue;
+    for (const marker of block.match(/<TODO_LLM:[^>]*>/g) ?? []) {
+      counts.set(marker, (counts.get(marker) ?? 0) + 1);
+      count += 1;
+    }
   }
   return {
-    count: matches.length,
-    markers: [...counts.entries()].map(([marker, count]) => ({ marker, count })),
+    count,
+    markers: [...counts.entries()].map(([marker, markerCount]) => ({
+      marker,
+      count: markerCount,
+    })),
   };
 }
 

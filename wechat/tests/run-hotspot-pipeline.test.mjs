@@ -501,6 +501,25 @@ test("verifyScanReport returns the evaluation for a healthy scan", async () => {
   }
 });
 
+test("detectScanPlaceholders exempts placeholders inside degraded (<降级>) items", () => {
+  const md = [
+    "### Reddit R1 正常帖",
+    "- 标签: AI工具",
+    "- 切入角度: 真实的切入角度",
+    "",
+    "### Reddit R2 低优先级帖",
+    "- 标签: <降级:无标签>",
+    "- 切入角度: <TODO_LLM:angle>", // 降级项，豁免
+    "",
+    "### Reddit R3 打标失败帖",
+    "- 这是什么东西（一句话）: <TODO_LLM:summary>", // 普通项，必须拦
+  ].join("\n");
+
+  const result = detectScanPlaceholders(md);
+  assert.equal(result.count, 1);
+  assert.deepEqual(result.markers, [{ marker: "<TODO_LLM:summary>", count: 1 }]);
+});
+
 test("detectScanPlaceholders counts unresolved LLM markers by type", () => {
   const clean = detectScanPlaceholders("summary: real text\nangle: also real");
   assert.equal(clean.count, 0);
