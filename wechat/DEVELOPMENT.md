@@ -101,14 +101,14 @@ pnpm run publish:draft -- --date 2026-07-11 --submit
 默认 dry-run：
 
 ```bash
-cd /Users/linling/Documents/code/ai/IT-Hotspot/wechat
+cd wechat
 pnpm run publish:hotspot -- --date 2026-07-11
 ```
 
 真实执行：
 
 ```bash
-cd /Users/linling/Documents/code/ai/IT-Hotspot/wechat
+cd wechat
 pnpm run publish:hotspot -- --date 2026-07-11 --run
 ```
 
