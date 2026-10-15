@@ -394,9 +394,8 @@ function callCodex(prompt, env = process.env) {
     "--output-last-message",
     outputPath,
   ];
-  if (env.WECHAT_TITLE_MODEL) {
-    args.push("--model", env.WECHAT_TITLE_MODEL);
-  }
+  const titleModel = env.WECHAT_TITLE_MODEL || "gpt-5.6-luna";
+  args.push("--model", titleModel);
   args.push("-");
 
   const codexPrompt = [
